@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هدایت به باسلام</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            direction: rtl;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .product-name {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #764ba2;
+            border-right: 4px solid #764ba2;
+        }
+        .loading {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #764ba2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px 0;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .status {
+            color: #666;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #f0f0f0;
+            border-radius: 2px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            animation: progress 2s ease-in-out forwards;
+        }
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        .manual-link {
+            display: none;
+            margin-top: 20px;
+            color: #764ba2;
+            text-decoration: none;
+            font-size: 14px;
+            border: 1px solid #764ba2;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .manual-link:hover {
+            background: #764ba2;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🛒</div>
+        <h1>در حال انتقال به باسلام</h1>
+        <p style="color: #666; font-size: 14px; margin-bottom: 10px;">لطفاً چند لحظه صبر کنید...</p>
+        
+        <div class="product-name" id="productName">محصول مورد نظر</div>
+
+        <div class="loading"></div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        <div class="status" id="statusText">🔄 در حال اتصال به باسلام...</div>
+
+        <a href="#" class="manual-link" id="manualLink">🔗 در صورت عدم انتقال، اینجا کلیک کنید</a>
+    </div>
+
+    <script>
+        // ============================================
+        // تنظیمات
+        // ============================================
+        const TRACKING_LINK = "https://a.bslm.ir/api/v1/tracking/click/g/5aac5fe59f17b6bdff7c49a234d4ad63?b64=";
+        
+        // دریافت اطلاعات از پارامترهای URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = urlParams.get('product') || 'محصول';
+        const productPrice = urlParams.get('price') || '';
+        const productLink = urlParams.get('link') || '';
+
+        // نمایش نام محصول
+        document.getElementById('productName').textContent = productName;
+
+        // ============================================
+        // تابع اصلی: هدایت و جستجوی خودکار
+        // ============================================
+        function redirectAndSearch() {
+            const statusText = document.getElementById('statusText');
+            
+            // مرحله 1: باز کردن صفحه اصلی با لینک tracking
+            statusText.textContent = '📱 در حال باز کردن باسلام...';
+            
+            // باز کردن صفحه اصلی در تب جدید
+            const basalamWindow = window.open(TRACKING_LINK, '_blank');
+            
+            // مرحله 2: بعد از بارگذاری، جستجو را اجرا کن
+            setTimeout(() => {
+                statusText.textContent = '🔍 در حال جستجوی محصول...';
+                
+                // اسکریپت جستجو در صفحه باسلام
+                const searchScript = `
+                    (function() {
+                        // پیدا کردن باکس جستجو
+                        const searchSelectors = [
+                            'input[type="search"]',
+                            'input[placeholder*="جستجو"]',
+                            'input[placeholder*="search"]',
+                            '.search-input',
+                            '[name="q"]',
+                            '#search',
+                            '.header-search input'
+                        ];
+                        
+                        let searchBox = null;
+                        for (let selector of searchSelectors) {
+                            searchBox = document.querySelector(selector);
+                            if (searchBox) break;
+                        }
+                        
+                        if (searchBox) {
+                            // وارد کردن نام محصول
+                            searchBox.value = "${productName}";
+                            searchBox.focus();
+                            
+                            // ایجاد رویدادهای ورودی
+                            const inputEvent = new Event('input', { bubbles: true });
+                            const changeEvent = new Event('change', { bubbles: true });
+                            searchBox.dispatchEvent(inputEvent);
+                            searchBox.dispatchEvent(changeEvent);
+                            
+                            // کلیک روی دکمه جستجو یا ارسال فرم
+                            setTimeout(() => {
+                                const searchBtn = document.querySelector('button[type="submit"], .search-btn, .search-button, .header-search button');
+                                if (searchBtn) {
+                                    searchBtn.click();
+                                } else {
+                                    // اگر دکمه نبود، Enter بزن
+                                    const enterEvent = new KeyboardEvent('keydown', {
+                                        key: 'Enter',
+                                        code: 'Enter',
+                                        keyCode: 13,
+                                        which: 13,
+                                        bubbles: true
+                                    });
+                                    searchBox.dispatchEvent(enterEvent);
+                                    
+                                    // ارسال فرم
+                                    const form = searchBox.closest('form');
+                                    if (form) {
+                                        form.submit();
+                                    }
+                                }
+                            }, 500);
+                            
+                            return true;
+                        }
+                        return false;
+                    })();
+                `;
+                
+                // اجرای اسکریپت در صفحه باز شده
+                try {
+                    if (basalamWindow) {
+                        setTimeout(() => {
+                            try {
+                                const result = basalamWindow.eval(searchScript);
+                                if (result) {
+                                    statusText.textContent = '✅ محصول پیدا شد!';
+                                } else {
+                                    statusText.textContent = '⚠️ باکس جستجو پیدا نشد';
+                                    showFallbackLink();
+                                }
+                            } catch(e) {
+                                console.log('خطا در اجرای اسکریپت:', e);
+                                showFallbackLink();
+                            }
+                        }, 2500);
+                    } else {
+                        showFallbackLink();
+                    }
+                } catch(e) {
+                    showFallbackLink();
+                }
+            }, 1500);
+        }
+
+        // ============================================
+        // لینک جایگزین (در صورت عدم موفقیت)
+        // ============================================
+        function showFallbackLink() {
+            const statusText = document.getElementById('statusText');
+            statusText.textContent = '⚠️ در صورت عدم انتقال، روی لینک زیر کلیک کنید';
+            
+            const manualLink = document.getElementById('manualLink');
+            if (productLink) {
+                manualLink.href = productLink;
+            } else {
+                const searchLink = `${TRACKING_LINK}?q=${encodeURIComponent(productName)}`;
+                manualLink.href = searchLink;
+            }
+            manualLink.style.display = 'inline-block';
+        }
+
+        // ============================================
+        // شروع فرایند
+        // ============================================
+        window.onload = function() {
+            if (productLink) {
+                setTimeout(() => {
+                    window.location.href = productLink;
+                }, 1500);
+            } else {
+                redirectAndSearch();
+            }
+        };
+
+        setTimeout(() => {
+            const manualLink = document.getElementById('manualLink');
+            if (manualLink.style.display !== 'inline-block') {
+                showFallbackLink();
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
