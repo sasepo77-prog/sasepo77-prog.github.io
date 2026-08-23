@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه محصولات</title>
+    <title>🛍️ فروشگاه محصولات</title>
     <style>
         * {
             margin: 0;
@@ -28,13 +28,17 @@
             margin-bottom: 30px;
         }
         header h1 {
-            font-size: 2em;
+            font-size: 2.2em;
             margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
         }
         .stats {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
             flex-wrap: wrap;
             margin-top: 15px;
         }
@@ -42,6 +46,7 @@
             background: rgba(255,255,255,0.2);
             padding: 8px 20px;
             border-radius: 20px;
+            font-size: 0.95em;
         }
         .filters {
             background: white;
@@ -50,17 +55,23 @@
             margin-bottom: 30px;
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .filters select, .filters input {
             padding: 10px 15px;
-            border: 2px solid #ddd;
+            border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 14px;
             flex: 1;
-            min-width: 150px;
+            min-width: 140px;
+            background: white;
+            transition: border-color 0.3s;
+        }
+        .filters select:focus, .filters input:focus {
+            border-color: #764ba2;
+            outline: none;
         }
         .filters button {
             padding: 10px 25px;
@@ -70,10 +81,14 @@
             border-radius: 10px;
             font-size: 14px;
             cursor: pointer;
-            transition: opacity 0.3s;
+            transition: opacity 0.3s, transform 0.2s;
         }
         .filters button:hover {
-            opacity: 0.8;
+            opacity: 0.85;
+            transform: scale(1.02);
+        }
+        .filters button.reset-btn {
+            background: #e74c3c;
         }
         .products-grid {
             display: grid;
@@ -100,6 +115,7 @@
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 15px;
+            background: #f0f0f0;
         }
         .product-card h3 {
             font-size: 1em;
@@ -107,6 +123,7 @@
             color: #333;
             height: 50px;
             overflow: hidden;
+            line-height: 1.4;
         }
         .product-card .price {
             font-size: 1.2em;
@@ -123,6 +140,7 @@
             font-size: 0.85em;
             color: #764ba2;
             margin-bottom: 12px;
+            font-weight: bold;
         }
         .btn {
             display: inline-block;
@@ -148,17 +166,32 @@
         }
         .no-products {
             text-align: center;
-            padding: 50px;
+            padding: 60px 20px;
             color: #999;
             font-size: 1.2em;
         }
         @media (max-width: 600px) {
             header h1 { font-size: 1.5em; }
-            .filters { flex-direction: column; }
-            .filters select, .filters input { width: 100%; }
-            .products-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
-            .product-card { padding: 12px; }
+            .filters {
+                flex-direction: column;
+                padding: 15px;
+            }
+            .filters select, .filters input {
+                width: 100%;
+                min-width: unset;
+            }
+            .filters button {
+                width: 100%;
+            }
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            .product-card {
+                padding: 12px;
+            }
             .product-card h3 { font-size: 0.85em; height: 40px; }
+            .product-card img { height: 150px; }
         }
         @media (max-width: 400px) {
             .products-grid { grid-template-columns: 1fr; }
@@ -171,32 +204,42 @@
             <h1>🛍️ فروشگاه محصولات</h1>
             <p>جدیدترین محصولات از فروشگاه‌های معتبر</p>
             <div class="stats">
-                <span class="stat-item">📦 <span id="total-products">144</span> محصول</span>
-                <span class="stat-item">🔄 بروزرسانی: 2026/08/23 17:50</span>
-                <span class="stat-item" id="visible-count">👁️ در حال نمایش: 144</span>
+                <span class="stat-item">📦 <span id="total-products">141</span> محصول</span>
+                <span class="stat-item">🔄 بروزرسانی: 2026/08/23 17:58</span>
+                <span class="stat-item" id="visible-count">👁️ در حال نمایش: 141</span>
+                <span class="stat-item" id="visit-count">👤 بازدید: ۰</span>
             </div>
         </header>
         
         <div class="filters">
             <select id="category-filter">
-                <option value="all">همه دسته‌ها</option><option value="ابزار">ابزار</option><option value="سلامت">سلامت</option><option value="لوازم خودرو">لوازم خودرو</option><option value="پوشاک">پوشاک</option>
+                <option value="all">همه دسته‌ها</option><option value="ابزار">ابزار</option><option value="روشنایی">روشنایی</option><option value="ست">ست</option><option value="سلامت">سلامت</option><option value="لوازم خودرو">لوازم خودرو</option><option value="پوشاک">پوشاک</option>
             </select>
             
             <input type="text" id="search-filter" placeholder="🔍 جستجوی محصول...">
             
             <select id="sort-filter">
-                <option value="default">مرتب‌سازی</option>
-                <option value="price-asc">قیمت: کم به زیاد</option>
-                <option value="price-desc">قیمت: زیاد به کم</option>
-                <option value="name-asc">نام: الفبا</option>
+                <option value="default">مرتب‌سازی پیش‌فرض</option>
+                <option value="price-asc">💰 قیمت: کم به زیاد</option>
+                <option value="price-desc">💰 قیمت: زیاد به کم</option>
+                <option value="name-asc">🔤 نام: الفبا</option>
             </select>
             
-            <button onclick="applyFilters()">اعمال فیلتر</button>
-            <button onclick="resetFilters()">ریست</button>
+            <button onclick="applyFilters()">✅ اعمال فیلتر</button>
+            <button onclick="resetFilters()" class="reset-btn">🔄 ریست</button>
         </div>
         
         <div class="products-grid" id="products-grid">
             
+        <div class="product-card" data-category="پوشاک" data-price="839">
+            <img src="https://varioshop.manamod.com/public/images/products/2095/product_220.jpg" alt="ست تیشرت شلوارک بیسکوئیتی سورمه ای مدل 2095" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوارک بیسکوئیتی سورمه ای مدل 2095</h3>
+            <p class="price">839 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <p class="category">📂 پوشاک</p>
+            <a href="https://varioshop.manamod.com/products/info/2095" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
         <div class="product-card" data-category="پوشاک" data-price="839">
             <img src="https://varioshop.manamod.com/public/images/products/2094/product_220.jpg" alt="ست تیشرت شلوار آستین بلند مشکی زرد JORDAN  مدل 2094" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>ست تیشرت شلوار آستین بلند مشکی زرد JORDAN  مدل 209...</h3>
@@ -332,10 +375,10 @@
             <a href="https://varioshop.manamod.com/products/info/2079" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="799">
+        <div class="product-card" data-category="پوشاک" data-price="799000">
             <img src="https://varioshop.manamod.com/public/images/products/2078/product_220.jpg" alt="ست تیشرت شلوار مشکی سفید eleven degrees مدل 2078" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>ست تیشرت شلوار مشکی سفید eleven degrees مدل 2078</h3>
-            <p class="price">799 هزارتومان</p>
+            <p class="price">799,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
             <p class="category">📂 پوشاک</p>
             <a href="https://varioshop.manamod.com/products/info/2078" target="_blank" class="btn">مشاهده و خرید</a>
@@ -395,156 +438,147 @@
             <a href="https://varioshop.manamod.com/products/info/2038" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="829000">
-            <img src="https://varioshop.manamod.com/public/images/products/2036/product_220.jpg" alt="ست تیشرت شلوار آستین کوتاه کلاهدار مشکی PERSIAN GULF مدل 2036" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>ست تیشرت شلوار آستین کوتاه کلاهدار مشکی PERSIAN GU...</h3>
-            <p class="price">829,000 هزارتومان</p>
-            <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
-            <a href="https://varioshop.manamod.com/products/info/2036" target="_blank" class="btn">مشاهده و خرید</a>
-        </div>
-        
-        <div class="product-card" data-category="پوشاک" data-price="549000">
+        <div class="product-card" data-category="ست" data-price="549000">
             <img src="https://varioshop.manamod.com/public/images/products/2069/product_220.jpg" alt="پیراهن مردانه آستین کوتاه مشکی مدل 2069" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه آستین کوتاه مشکی مدل 2069</h3>
             <p class="price">549,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2069" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="659000">
+        <div class="product-card" data-category="ست" data-price="659000">
             <img src="https://varioshop.manamod.com/public/images/products/2065/product_220.jpg" alt="پیراهن مردانه مراکشی آستین کوتاه شکلاتی مدل 2065" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه مراکشی آستین کوتاه شکلاتی مدل 2065</h3>
             <p class="price">659,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2065" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="649000">
+        <div class="product-card" data-category="ست" data-price="649000">
             <img src="https://varioshop.manamod.com/public/images/products/2061/product_220.jpg" alt="پیراهن مردانه مراکشی آستین کوتاه سورمه ای مدل 2061" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه مراکشی آستین کوتاه سورمه ای مدل 2061</h3>
             <p class="price">649,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2061" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="619000">
+        <div class="product-card" data-category="ست" data-price="619000">
             <img src="https://varioshop.manamod.com/public/images/products/2057/product_220.jpg" alt="پیراهن مردانه آستین بلند چاپی سفید قهوه ای مدل 2057" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه آستین بلند چاپی سفید قهوه ای مدل 205...</h3>
             <p class="price">619,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2057" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="779000">
+        <div class="product-card" data-category="ست" data-price="779000">
             <img src="https://varioshop.manamod.com/public/images/products/2048/product_220.jpg" alt="پیراهن مردانه آستین بلند لی آبی روشن مدل 2048" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه آستین بلند لی آبی روشن مدل 2048</h3>
             <p class="price">779,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2048" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="579000">
+        <div class="product-card" data-category="ست" data-price="579000">
             <img src="https://varioshop.manamod.com/public/images/products/2044/product_220.jpg" alt="پیراهن مردانه آستین بلند سورمه ای مدل 2044" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه آستین بلند سورمه ای مدل 2044</h3>
             <p class="price">579,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2044" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="599000">
+        <div class="product-card" data-category="ست" data-price="599000">
             <img src="https://varioshop.manamod.com/public/images/products/2043/product_220.jpg" alt="پیراهن مردانه آستین بلند مشکی مدل 2043" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه آستین بلند مشکی مدل 2043</h3>
             <p class="price">599,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2043" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="779000">
+        <div class="product-card" data-category="ست" data-price="779000">
             <img src="https://varioshop.manamod.com/public/images/products/2042/product_220.jpg" alt="پیراهن مردانه آستین بلند لی آبی مدل 2042" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه آستین بلند لی آبی مدل 2042</h3>
             <p class="price">779,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2042" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="559000">
+        <div class="product-card" data-category="ست" data-price="559000">
             <img src="https://varioshop.manamod.com/public/images/products/2032/product_220.jpg" alt="پیراهن مردانه آستین کوتاه کرم شکلاتی مدل 2032" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه آستین کوتاه کرم شکلاتی مدل 2032</h3>
             <p class="price">559,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2032" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="699000">
+        <div class="product-card" data-category="ست" data-price="699000">
             <img src="https://varioshop.manamod.com/public/images/products/2030/product_220.jpg" alt="پیراهن مردانه آستین بلند سفید مشکی کنف مدل 2030" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه آستین بلند سفید مشکی کنف مدل 2030</h3>
             <p class="price">699,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2030" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="579000">
+        <div class="product-card" data-category="ست" data-price="579000">
             <img src="https://varioshop.manamod.com/public/images/products/2022/product_220.jpg" alt="پیراهن مردانه آستین بلند سبز مدل 2022" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه آستین بلند سبز مدل 2022</h3>
             <p class="price">579,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2022" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="579000">
+        <div class="product-card" data-category="ست" data-price="579000">
             <img src="https://varioshop.manamod.com/public/images/products/2021/product_220.jpg" alt="پیراهن مردانه آستین بلند مشکی سبز مدل 2021" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه آستین بلند مشکی سبز مدل 2021</h3>
             <p class="price">579,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2021" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="549000">
+        <div class="product-card" data-category="ست" data-price="549000">
             <img src="https://varioshop.manamod.com/public/images/products/2020/product_220.jpg" alt="پیراهن آستین کوتاه مردانه سفید آبی چاپی مدل 2020" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن آستین کوتاه مردانه سفید آبی چاپی مدل 2020</h3>
             <p class="price">549,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2020" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="549000">
+        <div class="product-card" data-category="ست" data-price="549000">
             <img src="https://varioshop.manamod.com/public/images/products/2019/product_220.jpg" alt="پیراهن آستین کوتاه مردانه سفید مشکی چاپی مدل 2019" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن آستین کوتاه مردانه سفید مشکی چاپی مدل 2019</h3>
             <p class="price">549,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/2019" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="529000">
+        <div class="product-card" data-category="ست" data-price="529000">
             <img src="https://varioshop.manamod.com/public/images/products/1954/product_220.jpg" alt="پیراهن آستین کوتاه مردانه اناری کنف کش مدل 1954" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن آستین کوتاه مردانه اناری کنف کش مدل 1954</h3>
             <p class="price">529,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/1954" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="529000">
+        <div class="product-card" data-category="ست" data-price="529000">
             <img src="https://varioshop.manamod.com/public/images/products/1943/product_220.jpg" alt="پیراهن مردانه آستین بلند مشکی طوسی مدل 1943" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>پیراهن مردانه آستین بلند مشکی طوسی مدل 1943</h3>
             <p class="price">529,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/1943" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
@@ -557,12 +591,12 @@
             <a href="https://varioshop.manamod.com/products/info/2025" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="599000">
+        <div class="product-card" data-category="ست" data-price="599000">
             <img src="https://varioshop.manamod.com/public/images/products/1491/product_220.jpg" alt="سویشرت آستین کوتاه سفید TOKYO مدل 1491" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>سویشرت آستین کوتاه سفید TOKYO مدل 1491</h3>
             <p class="price">599,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/1491" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
@@ -602,21 +636,21 @@
             <a href="https://varioshop.manamod.com/products/info/1933" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="479000">
+        <div class="product-card" data-category="ست" data-price="479000">
             <img src="https://varioshop.manamod.com/public/images/products/1860/product_220.jpg" alt="سویشرت آستین کوتاه زغال سنگی Adidas مدل 1860" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>سویشرت آستین کوتاه زغال سنگی Adidas مدل 1860</h3>
             <p class="price">479,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/1860" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="699000">
+        <div class="product-card" data-category="ست" data-price="699000">
             <img src="https://varioshop.manamod.com/public/images/products/1814/product_220.jpg" alt="سویشرت آستین بلند مشکی Adidas مدل 1814" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>سویشرت آستین بلند مشکی Adidas مدل 1814</h3>
             <p class="price">699,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/1814" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
@@ -629,48 +663,48 @@
             <a href="https://varioshop.manamod.com/products/info/1788" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="588000">
+        <div class="product-card" data-category="ست" data-price="588000">
             <img src="https://varioshop.manamod.com/public/images/products/1277/product_220.jpg" alt="بلوز مردانه آستین بلند طوسی مدل 1277" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>بلوز مردانه آستین بلند طوسی مدل 1277</h3>
             <p class="price">588,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/1277" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="599000">
+        <div class="product-card" data-category="ست" data-price="599000">
             <img src="https://varioshop.manamod.com/public/images/products/1468/product_220.jpg" alt="سویشرت آستین کوتاه چهارخانه سفید مشکی مدل 1468" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>سویشرت آستین کوتاه چهارخانه سفید مشکی مدل 1468</h3>
             <p class="price">599,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/1468" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="599000">
+        <div class="product-card" data-category="ست" data-price="599000">
             <img src="https://varioshop.manamod.com/public/images/products/1462/product_220.jpg" alt="سویشرت آستین کوتاه چهارخانه مشکی طوسی مدل 1462" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>سویشرت آستین کوتاه چهارخانه مشکی طوسی مدل 1462</h3>
             <p class="price">599,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/1462" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="289000">
+        <div class="product-card" data-category="ست" data-price="289000">
             <img src="https://varioshop.manamod.com/public/images/products/1492/product_220.jpg" alt="سویشرت آستین کوتاه خردلی TOKYO مدل 1492" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>سویشرت آستین کوتاه خردلی TOKYO مدل 1492</h3>
             <p class="price">289,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/1492" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="پوشاک" data-price="289000">
+        <div class="product-card" data-category="ست" data-price="289000">
             <img src="https://varioshop.manamod.com/public/images/products/1476/product_220.jpg" alt="سویشرت آستین کوتاه طوسی TOKYO مدل 1476" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>سویشرت آستین کوتاه طوسی TOKYO مدل 1476</h3>
             <p class="price">289,000 هزارتومان</p>
             <p class="source">🏷️ varioshop</p>
-            <p class="category">📂 پوشاک</p>
+            <p class="category">📂 ست</p>
             <a href="https://varioshop.manamod.com/products/info/1476" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
@@ -737,24 +771,6 @@
             <a href="https://styleeno.nadikala.com/product-421/automatic-water-dispenser" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="ابزار" data-price="170000119000">
-            <img src="https://styleeno.nadikala.com/images/tpl/84870734885110251438.webp" alt="برس حرفه ای تمیزکننده چندکاره خودرو و لوازم" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>برس حرفه ای تمیزکننده چندکاره خودرو و لوازم</h3>
-            <p class="price">170,000119,000</p>
-            <p class="source">🏷️ styleeno</p>
-            <p class="category">📂 ابزار</p>
-            <a href="https://styleeno.nadikala.com/product-542/car-interior-cleaning-brush" target="_blank" class="btn">مشاهده و خرید</a>
-        </div>
-        
-        <div class="product-card" data-category="لوازم خودرو" data-price="200000150000">
-            <img src="https://styleeno.nadikala.com/images/tpl/87548610477741953607.webp" alt="آینه محدب نقطه کور قابل تنظیم خودرو مدل E360 بسته 2 عددی" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>آینه محدب نقطه کور قابل تنظیم خودرو مدل E360 بسته ...</h3>
-            <p class="price">200,000150,000</p>
-            <p class="source">🏷️ styleeno</p>
-            <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-536/car-blind-spot-360-mirror-glue-2pcs" target="_blank" class="btn">مشاهده و خرید</a>
-        </div>
-        
         <div class="product-card" data-category="لوازم خودرو" data-price="10000079000">
             <img src="https://styleeno.nadikala.com/images/tpl/81161829928637761056.webp" alt="نگهدارنده عینک خودرو مدل کلیپسی" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>نگهدارنده عینک خودرو مدل کلیپسی</h3>
@@ -764,49 +780,49 @@
             <a href="https://styleeno.nadikala.com/product-712/clip-on-car-glasses-holder" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="لوازم خودرو" data-price="500000450000">
-            <img src="https://styleeno.nadikala.com/./upload/product/2026/08/psht-sndly-rahty-khvdrv-mdl-leu.webp" alt="پشت صندلی راحتی خودرو مدل LEU" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>پشت صندلی راحتی خودرو مدل LEU</h3>
-            <p class="price">500,000450,000</p>
+        <div class="product-card" data-category="لوازم خودرو" data-price="300000270000">
+            <img src="https://styleeno.nadikala.com/images/tpl/61026306815386598822.webp" alt="هولدر موبایل جلو داشبورد و سایه بان" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>هولدر موبایل جلو داشبورد و سایه بان</h3>
+            <p class="price">300,000270,000</p>
             <p class="source">🏷️ styleeno</p>
             <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-1024/leu-car-seat-backrest" target="_blank" class="btn">مشاهده و خرید</a>
+            <a href="https://styleeno.nadikala.com/product-237/ceuta-car-phone-holder-mount" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="لوازم خودرو" data-price="10000097000">
-            <img src="https://styleeno.nadikala.com/images/tpl/27983157036389512934.webp" alt="هولدر موبایل دریچه کولر" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>هولدر موبایل دریچه کولر</h3>
-            <p class="price">100,00097,000</p>
+        <div class="product-card" data-category="لوازم خودرو" data-price="375000">
+            <img src="https://styleeno.nadikala.com/images/tpl/55999386244351065662.webp" alt="هولدر موبایل مگنتی مدل موستانگ" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>هولدر موبایل مگنتی مدل موستانگ</h3>
+            <p class="price">375,000</p>
             <p class="source">🏷️ styleeno</p>
             <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-766/alician-mobile-air-vent-holder" target="_blank" class="btn">مشاهده و خرید</a>
+            <a href="https://styleeno.nadikala.com/product-624/mustang-agnetic-obile-older" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="لوازم خودرو" data-price="10000079000">
-            <img src="https://styleeno.nadikala.com/images/tpl/68741312716491592513.webp" alt="کیف زباله خودرو" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>کیف زباله خودرو</h3>
-            <p class="price">100,00079,000</p>
+        <div class="product-card" data-category="لوازم خودرو" data-price="47000">
+            <img src="https://styleeno.nadikala.com/images/tpl/25218980697085077114.webp" alt="سر والف شبرنگ خودرو و موتورسیکلت بسته 4 عددی" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>سر والف شبرنگ خودرو و موتورسیکلت بسته 4 عددی</h3>
+            <p class="price">47,000</p>
             <p class="source">🏷️ styleeno</p>
             <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-265/car-seat-back-garbage-bags" target="_blank" class="btn">مشاهده و خرید</a>
+            <a href="https://styleeno.nadikala.com/product-325/luminous-gas-cap" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="لوازم خودرو" data-price="10000097000">
-            <img src="https://styleeno.nadikala.com/images/tpl/36296674899341230596.webp" alt="پایه نگهدارنده گوشی روی فرمان خودرو" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>پایه نگهدارنده گوشی روی فرمان خودرو</h3>
-            <p class="price">100,00097,000</p>
+        <div class="product-card" data-category="لوازم خودرو" data-price="145000">
+            <img src="https://styleeno.nadikala.com/images/tpl/5873076111929094851.webp" alt="دستگاه مکنده صافکاری PDR" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>دستگاه مکنده صافکاری PDR</h3>
+            <p class="price">145,000</p>
             <p class="source">🏷️ styleeno</p>
             <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-987/steering-wheel-phone-holder" target="_blank" class="btn">مشاهده و خرید</a>
+            <a href="https://styleeno.nadikala.com/product-469/pdr-smoothing-suction-device" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="لوازم خودرو" data-price="390000">
-            <img src="https://styleeno.nadikala.com/images/tpl/58011197964503585479.webp" alt="هولدر موبایل 360 درجه مدل سایبان خودرو" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>هولدر موبایل 360 درجه مدل سایبان خودرو</h3>
-            <p class="price">390,000</p>
+        <div class="product-card" data-category="لوازم خودرو" data-price="230000207000">
+            <img src="https://styleeno.nadikala.com/images/tpl/77869402997435021969.webp" alt="سطل زباله درب دار لیوانی خودرو" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>سطل زباله درب دار لیوانی خودرو</h3>
+            <p class="price">230,000207,000</p>
             <p class="source">🏷️ styleeno</p>
             <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-434/sun-visor-cellphone-holder" target="_blank" class="btn">مشاهده و خرید</a>
+            <a href="https://styleeno.nadikala.com/product-403/car-trash-cup" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
         <div class="product-card" data-category="لوازم خودرو" data-price="10000087000">
@@ -818,13 +834,31 @@
             <a href="https://styleeno.nadikala.com/product-535/car-blind-spot-360-mirror-glue" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="لوازم خودرو" data-price="47000">
-            <img src="https://styleeno.nadikala.com/images/tpl/25218980697085077114.webp" alt="سر والف شبرنگ خودرو و موتورسیکلت بسته 4 عددی" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>سر والف شبرنگ خودرو و موتورسیکلت بسته 4 عددی</h3>
-            <p class="price">47,000</p>
+        <div class="product-card" data-category="لوازم خودرو" data-price="10000079000">
+            <img src="https://styleeno.nadikala.com/images/tpl/68741312716491592513.webp" alt="کیف زباله خودرو" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>کیف زباله خودرو</h3>
+            <p class="price">100,00079,000</p>
             <p class="source">🏷️ styleeno</p>
             <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-325/luminous-gas-cap" target="_blank" class="btn">مشاهده و خرید</a>
+            <a href="https://styleeno.nadikala.com/product-265/car-seat-back-garbage-bags" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card" data-category="لوازم خودرو" data-price="390000">
+            <img src="https://styleeno.nadikala.com/images/tpl/58011197964503585479.webp" alt="هولدر موبایل 360 درجه مدل سایبان خودرو" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>هولدر موبایل 360 درجه مدل سایبان خودرو</h3>
+            <p class="price">390,000</p>
+            <p class="source">🏷️ styleeno</p>
+            <p class="category">📂 لوازم خودرو</p>
+            <a href="https://styleeno.nadikala.com/product-434/sun-visor-cellphone-holder" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card" data-category="ابزار" data-price="170000119000">
+            <img src="https://styleeno.nadikala.com/images/tpl/84870734885110251438.webp" alt="برس حرفه ای تمیزکننده چندکاره خودرو و لوازم" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>برس حرفه ای تمیزکننده چندکاره خودرو و لوازم</h3>
+            <p class="price">170,000119,000</p>
+            <p class="source">🏷️ styleeno</p>
+            <p class="category">📂 ابزار</p>
+            <a href="https://styleeno.nadikala.com/product-542/car-interior-cleaning-brush" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
         <div class="product-card" data-category="لوازم خودرو" data-price="490000">
@@ -1007,85 +1041,49 @@
             <a href="https://styleeno.nadikala.com/product-586/digital-meridian-massager-xtk-058" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="لوازم خودرو" data-price="390000">
-            <img src="https://styleeno.nadikala.com/images/tpl/81544789759635175593.webp" alt="باکس جواهرات مدل لاکچری E32" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>باکس جواهرات مدل لاکچری E32</h3>
-            <p class="price">390,000</p>
+        <div class="product-card" data-category="لوازم خودرو" data-price="220000">
+            <img src="https://styleeno.nadikala.com/images/tpl/62970320654987453636.webp" alt="چوب لباسی مسافرتی تاشو قابل حمل بسته 2 عددی" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>چوب لباسی مسافرتی تاشو قابل حمل بسته 2 عددی</h3>
+            <p class="price">220,000</p>
             <p class="source">🏷️ styleeno</p>
             <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-697/luxury-jewelry-box-e32" target="_blank" class="btn">مشاهده و خرید</a>
+            <a href="https://styleeno.nadikala.com/product-808/foldable-travel-hanger-portable-2-pack" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="لوازم خودرو" data-price="115000112000">
-            <img src="https://styleeno.nadikala.com/images/tpl/6645270677421067120.webp" alt="جوراب طرح کتانی آل استار" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>جوراب طرح کتانی آل استار</h3>
-            <p class="price">115,000112,000</p>
+        <div class="product-card" data-category="لوازم خودرو" data-price="400000376000">
+            <img src="https://styleeno.nadikala.com/images/tpl/80361645008267958606.webp" alt="رخت آویز 5 طبقه رگالی مدل تمام استیل" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>رخت آویز 5 طبقه رگالی مدل تمام استیل</h3>
+            <p class="price">400,000376,000</p>
             <p class="source">🏷️ styleeno</p>
             <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-631/all-star-inspired-sneaker-socks" target="_blank" class="btn">مشاهده و خرید</a>
+            <a href="https://styleeno.nadikala.com/product-737/5-tier-steel-clothing-rack" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="لوازم خودرو" data-price="500000450000">
-            <img src="https://styleeno.nadikala.com/images/tpl/35053473458987095060.webp" alt="سشوار مسافرتی مدل NOVA توان 1000 وات" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>سشوار مسافرتی مدل NOVA توان 1000 وات</h3>
-            <p class="price">500,000450,000</p>
-            <p class="source">🏷️ styleeno</p>
-            <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-911/novatravel-hair-dryer-1000w" target="_blank" class="btn">مشاهده و خرید</a>
-        </div>
-        
-        <div class="product-card" data-category="لوازم خودرو" data-price="125000">
-            <img src="https://styleeno.nadikala.com/images/tpl/3162838577702190069.webp" alt="اتومایزر شارژی عطر و ادکلن" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>اتومایزر شارژی عطر و ادکلن</h3>
-            <p class="price">125,000</p>
-            <p class="source">🏷️ styleeno</p>
-            <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-1022/rechargeable-perfume-atomizer" target="_blank" class="btn">مشاهده و خرید</a>
-        </div>
-        
-        <div class="product-card" data-category="لوازم خودرو" data-price="200000190000">
-            <img src="https://styleeno.nadikala.com/images/tpl/1238182834895531362.webp" alt="نگهدارنده و آویز کیف داخل کمد مدل 3 طبقه" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>نگهدارنده و آویز کیف داخل کمد مدل 3 طبقه</h3>
-            <p class="price">200,000190,000</p>
-            <p class="source">🏷️ styleeno</p>
-            <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-1018/3-tier-closet-bag-organizer-hanger" target="_blank" class="btn">مشاهده و خرید</a>
-        </div>
-        
-        <div class="product-card" data-category="لوازم خودرو" data-price="180000135000">
-            <img src="https://styleeno.nadikala.com/images/tpl/61690580962731033605.webp" alt="پد آرایش پاک کن ایپک بسته 70 عددی" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>پد آرایش پاک کن ایپک بسته 70 عددی</h3>
-            <p class="price">180,000135,000</p>
-            <p class="source">🏷️ styleeno</p>
-            <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-213/ipek-makeup-remover-cotton-pads-70-pcs" target="_blank" class="btn">مشاهده و خرید</a>
-        </div>
-        
-        <div class="product-card" data-category="لوازم خودرو" data-price="390000">
+        <div class="product-card" data-category="روشنایی" data-price="390000">
             <img src="https://styleeno.nadikala.com/images/tpl/79479503556902945840.webp" alt="فندک شارژی المنتی چراغ دار" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
             <h3>فندک شارژی المنتی چراغ دار</h3>
             <p class="price">390,000</p>
             <p class="source">🏷️ styleeno</p>
-            <p class="category">📂 لوازم خودرو</p>
+            <p class="category">📂 روشنایی</p>
             <a href="https://styleeno.nadikala.com/product-732/rechargeable-electric-lighter" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="لوازم خودرو" data-price="300000270000">
-            <img src="https://styleeno.nadikala.com/images/tpl/61026306815386598822.webp" alt="هولدر موبایل جلو داشبورد و سایه بان" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>هولدر موبایل جلو داشبورد و سایه بان</h3>
-            <p class="price">300,000270,000</p>
+        <div class="product-card" data-category="لوازم خودرو" data-price="10000095000">
+            <img src="https://styleeno.nadikala.com/images/tpl/36694742306259522582.webp" alt="بالشتک محافظ پشت پا بسته 2 عددی" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>بالشتک محافظ پشت پا بسته 2 عددی</h3>
+            <p class="price">100,00095,000</p>
             <p class="source">🏷️ styleeno</p>
             <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-237/ceuta-car-phone-holder-mount" target="_blank" class="btn">مشاهده و خرید</a>
+            <a href="https://styleeno.nadikala.com/product-834/heel-protector-pad-2-pack" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
-        <div class="product-card" data-category="لوازم خودرو" data-price="145000">
-            <img src="https://styleeno.nadikala.com/images/tpl/5873076111929094851.webp" alt="دستگاه مکنده صافکاری PDR" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>دستگاه مکنده صافکاری PDR</h3>
-            <p class="price">145,000</p>
+        <div class="product-card" data-category="لوازم خودرو" data-price="10000065000">
+            <img src="https://styleeno.nadikala.com/images/tpl/47808692791714010457.webp" alt="نظم دهنده سیلیکونی چند منظوره سیم" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>نظم دهنده سیلیکونی چند منظوره سیم</h3>
+            <p class="price">100,00065,000</p>
             <p class="source">🏷️ styleeno</p>
             <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-469/pdr-smoothing-suction-device" target="_blank" class="btn">مشاهده و خرید</a>
+            <a href="https://styleeno.nadikala.com/product-277/winged-silicone-organizer-and-wire-gatherer" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
         <div class="product-card" data-category="لوازم خودرو" data-price="775000620000">
@@ -1095,6 +1093,24 @@
             <p class="source">🏷️ styleeno</p>
             <p class="category">📂 لوازم خودرو</p>
             <a href="https://styleeno.nadikala.com/product-101/supercharg-shower-head" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card" data-category="لوازم خودرو" data-price="200000150000">
+            <img src="https://styleeno.nadikala.com/images/tpl/87548610477741953607.webp" alt="آینه محدب نقطه کور قابل تنظیم خودرو مدل E360 بسته 2 عددی" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>آینه محدب نقطه کور قابل تنظیم خودرو مدل E360 بسته ...</h3>
+            <p class="price">200,000150,000</p>
+            <p class="source">🏷️ styleeno</p>
+            <p class="category">📂 لوازم خودرو</p>
+            <a href="https://styleeno.nadikala.com/product-536/car-blind-spot-360-mirror-glue-2pcs" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card" data-category="لوازم خودرو" data-price="500000450000">
+            <img src="https://styleeno.nadikala.com/./upload/product/2026/08/psht-sndly-rahty-khvdrv-mdl-leu.webp" alt="پشت صندلی راحتی خودرو مدل LEU" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پشت صندلی راحتی خودرو مدل LEU</h3>
+            <p class="price">500,000450,000</p>
+            <p class="source">🏷️ styleeno</p>
+            <p class="category">📂 لوازم خودرو</p>
+            <a href="https://styleeno.nadikala.com/product-1024/leu-car-seat-backrest" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
         <div class="product-card" data-category="لوازم خودرو" data-price="145000116000">
@@ -1158,15 +1174,6 @@
             <p class="source">🏷️ styleeno</p>
             <p class="category">📂 لوازم خودرو</p>
             <a href="https://styleeno.nadikala.com/product-401/7-egg-cooker" target="_blank" class="btn">مشاهده و خرید</a>
-        </div>
-        
-        <div class="product-card" data-category="لوازم خودرو" data-price="10000065000">
-            <img src="https://styleeno.nadikala.com/images/tpl/47808692791714010457.webp" alt="نظم دهنده سیلیکونی چند منظوره سیم" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-            <h3>نظم دهنده سیلیکونی چند منظوره سیم</h3>
-            <p class="price">100,00065,000</p>
-            <p class="source">🏷️ styleeno</p>
-            <p class="category">📂 لوازم خودرو</p>
-            <a href="https://styleeno.nadikala.com/product-277/winged-silicone-organizer-and-wire-gatherer" target="_blank" class="btn">مشاهده و خرید</a>
         </div>
         
         <div class="product-card" data-category="لوازم خودرو" data-price="220000">
@@ -1496,18 +1503,38 @@
         </div>
         
         <div class="footer">
-            <p>© 2024 - تمامی حقوق محفوظ است</p>
+            <p>© 2024 - تمامی حقوق محفوظ است | با ❤️ ساخته شده</p>
         </div>
     </div>
     
     <script>
-        // ذخیره محصولات اصلی
+        // ============================================
+        // ۱. آمار بازدید (ذخیره در localStorage)
+        // ============================================
+        (function() {
+            let visits = localStorage.getItem('shop_visits');
+            if (visits) {
+                visits = parseInt(visits) + 1;
+            } else {
+                visits = 1;
+            }
+            localStorage.setItem('shop_visits', visits);
+            document.getElementById('visit-count').textContent = `👤 بازدید: ${visits}`;
+            
+            console.log(`📈 کل بازدیدها: ${visits}`);
+        })();
+        
+        // ============================================
+        // ۲. فیلتر و جستجو
+        // ============================================
         const allProducts = document.querySelectorAll('.product-card');
+        let currentSort = 'default';
         
         function applyFilters() {
             const category = document.getElementById('category-filter').value;
-            const search = document.getElementById('search-filter').value.toLowerCase();
+            const search = document.getElementById('search-filter').value.toLowerCase().trim();
             const sort = document.getElementById('sort-filter').value;
+            currentSort = sort;
             
             let visible = 0;
             let products = [];
@@ -1553,12 +1580,28 @@
             }
             
             document.getElementById('visible-count').textContent = `👁️ در حال نمایش: ${visible}`;
+            
+            // نمایش پیام عدم وجود محصول
+            let noMsg = document.getElementById('no-products-msg');
+            if (visible === 0) {
+                if (!noMsg) {
+                    noMsg = document.createElement('div');
+                    noMsg.id = 'no-products-msg';
+                    noMsg.className = 'no-products';
+                    noMsg.textContent = '❌ هیچ محصولی با این فیلترها پیدا نشد!';
+                    document.getElementById('products-grid').appendChild(noMsg);
+                }
+                noMsg.style.display = 'block';
+            } else {
+                if (noMsg) noMsg.style.display = 'none';
+            }
         }
         
         function resetFilters() {
             document.getElementById('category-filter').value = 'all';
             document.getElementById('search-filter').value = '';
             document.getElementById('sort-filter').value = 'default';
+            currentSort = 'default';
             applyFilters();
         }
         
@@ -1567,20 +1610,11 @@
         document.getElementById('search-filter').addEventListener('input', applyFilters);
         document.getElementById('sort-filter').addEventListener('change', applyFilters);
         
-        // نمایش آمار بازدید (ذخیره در localStorage)
-        (function() {
-            let visits = localStorage.getItem('site_visits');
-            if (visits) {
-                visits = parseInt(visits) + 1;
-            } else {
-                visits = 1;
-            }
-            localStorage.setItem('site_visits', visits);
-            console.log(`📊 بازدید امروز: ${visits}`);
-            
-            // نمایش در کنسول
-            console.log(`📈 کل بازدیدها: ${visits}`);
-        })();
+        // اجرای اولیه فیلترها
+        document.addEventListener('DOMContentLoaded', applyFilters);
+        
+        console.log(`✅ 141 محصول بارگذاری شد`);
+        console.log(`📊 دسته‌بندی‌ها: ابزار, روشنایی, ست, سلامت, لوازم خودرو, پوشاک`);
     </script>
 </body>
 </html>

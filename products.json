@@ -1,7 +1,15 @@
 {
-  "last_update": "2026-08-23 17:50:02",
-  "total_products": 144,
+  "last_update": "2026-08-23 17:58:02",
+  "total_products": 141,
   "products": [
+    {
+      "name": "ست تیشرت شلوارک بیسکوئیتی سورمه ای مدل 2095",
+      "price": "839 هزارتومان",
+      "image": "https://varioshop.manamod.com/public/images/products/2095/product_220.jpg",
+      "link": "https://varioshop.manamod.com/products/info/2095",
+      "source": "varioshop",
+      "category": "پوشاک"
+    },
     {
       "name": "ست تیشرت شلوار آستین بلند مشکی زرد JORDAN  مدل 2094",
       "price": "839 هزارتومان",
@@ -124,7 +132,7 @@
     },
     {
       "name": "ست تیشرت شلوار مشکی سفید eleven degrees مدل 2078",
-      "price": "799 هزارتومان",
+      "price": "799,000 هزارتومان",
       "image": "https://varioshop.manamod.com/public/images/products/2078/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2078",
       "source": "varioshop",
@@ -179,20 +187,12 @@
       "category": "پوشاک"
     },
     {
-      "name": "ست تیشرت شلوار آستین کوتاه کلاهدار مشکی PERSIAN GULF مدل 2036",
-      "price": "829,000 هزارتومان",
-      "image": "https://varioshop.manamod.com/public/images/products/2036/product_220.jpg",
-      "link": "https://varioshop.manamod.com/products/info/2036",
-      "source": "varioshop",
-      "category": "پوشاک"
-    },
-    {
       "name": "پیراهن مردانه آستین کوتاه مشکی مدل 2069",
       "price": "549,000 هزارتومان",
       "image": "https://varioshop.manamod.com/public/images/products/2069/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2069",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن مردانه مراکشی آستین کوتاه شکلاتی مدل 2065",
@@ -200,7 +200,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2065/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2065",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن مردانه مراکشی آستین کوتاه سورمه ای مدل 2061",
@@ -208,7 +208,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2061/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2061",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن مردانه آستین بلند چاپی سفید قهوه ای مدل 2057",
@@ -216,7 +216,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2057/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2057",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن مردانه آستین بلند لی آبی روشن مدل 2048",
@@ -224,7 +224,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2048/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2048",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن مردانه آستین بلند سورمه ای مدل 2044",
@@ -232,7 +232,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2044/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2044",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن مردانه آستین بلند مشکی مدل 2043",
@@ -240,7 +240,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2043/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2043",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن مردانه آستین بلند لی آبی مدل 2042",
@@ -248,7 +248,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2042/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2042",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن مردانه آستین کوتاه کرم شکلاتی مدل 2032",
@@ -256,7 +256,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2032/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2032",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن مردانه آستین بلند سفید مشکی کنف مدل 2030",
@@ -264,7 +264,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2030/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2030",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن مردانه آستین بلند سبز مدل 2022",
@@ -272,7 +272,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2022/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2022",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن مردانه آستین بلند مشکی سبز مدل 2021",
@@ -280,7 +280,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2021/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2021",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن آستین کوتاه مردانه سفید آبی چاپی مدل 2020",
@@ -288,7 +288,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2020/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2020",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن آستین کوتاه مردانه سفید مشکی چاپی مدل 2019",
@@ -296,7 +296,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/2019/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/2019",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن آستین کوتاه مردانه اناری کنف کش مدل 1954",
@@ -304,7 +304,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/1954/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/1954",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "پیراهن مردانه آستین بلند مشکی طوسی مدل 1943",
@@ -312,7 +312,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/1943/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/1943",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "ست سویشرت شلوار کلاهدار مشکی سفید Emirates مدل 2025",
@@ -328,7 +328,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/1491/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/1491",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "ست سویشرت شلوار کلاهدار مشکی سفید Diesel مدل 1996",
@@ -368,7 +368,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/1860/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/1860",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "سویشرت آستین بلند مشکی Adidas مدل 1814",
@@ -376,7 +376,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/1814/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/1814",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "ست هودی شلوار کلاه دار قرمز مشکی Nike مدل 1788",
@@ -392,7 +392,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/1277/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/1277",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "سویشرت آستین کوتاه چهارخانه سفید مشکی مدل 1468",
@@ -400,7 +400,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/1468/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/1468",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "سویشرت آستین کوتاه چهارخانه مشکی طوسی مدل 1462",
@@ -408,7 +408,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/1462/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/1462",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "سویشرت آستین کوتاه خردلی TOKYO مدل 1492",
@@ -416,7 +416,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/1492/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/1492",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "سویشرت آستین کوتاه طوسی TOKYO مدل 1476",
@@ -424,7 +424,7 @@
       "image": "https://varioshop.manamod.com/public/images/products/1476/product_220.jpg",
       "link": "https://varioshop.manamod.com/products/info/1476",
       "source": "varioshop",
-      "category": "پوشاک"
+      "category": "ست"
     },
     {
       "name": "سویشرت چهارخانه مشکی قرمز تو خز مدل 1377",
@@ -483,22 +483,6 @@
       "category": "لوازم خودرو"
     },
     {
-      "name": "برس حرفه ای تمیزکننده چندکاره خودرو و لوازم",
-      "price": "170,000119,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/84870734885110251438.webp",
-      "link": "https://styleeno.nadikala.com/product-542/car-interior-cleaning-brush",
-      "source": "styleeno",
-      "category": "ابزار"
-    },
-    {
-      "name": "آینه محدب نقطه کور قابل تنظیم خودرو مدل E360 بسته 2 عددی",
-      "price": "200,000150,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/87548610477741953607.webp",
-      "link": "https://styleeno.nadikala.com/product-536/car-blind-spot-360-mirror-glue-2pcs",
-      "source": "styleeno",
-      "category": "لوازم خودرو"
-    },
-    {
       "name": "نگهدارنده عینک خودرو مدل کلیپسی",
       "price": "100,00079,000",
       "image": "https://styleeno.nadikala.com/images/tpl/81161829928637761056.webp",
@@ -507,42 +491,42 @@
       "category": "لوازم خودرو"
     },
     {
-      "name": "پشت صندلی راحتی خودرو مدل LEU",
-      "price": "500,000450,000",
-      "image": "https://styleeno.nadikala.com/./upload/product/2026/08/psht-sndly-rahty-khvdrv-mdl-leu.webp",
-      "link": "https://styleeno.nadikala.com/product-1024/leu-car-seat-backrest",
+      "name": "هولدر موبایل جلو داشبورد و سایه بان",
+      "price": "300,000270,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/61026306815386598822.webp",
+      "link": "https://styleeno.nadikala.com/product-237/ceuta-car-phone-holder-mount",
       "source": "styleeno",
       "category": "لوازم خودرو"
     },
     {
-      "name": "هولدر موبایل دریچه کولر",
-      "price": "100,00097,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/27983157036389512934.webp",
-      "link": "https://styleeno.nadikala.com/product-766/alician-mobile-air-vent-holder",
+      "name": "هولدر موبایل مگنتی مدل موستانگ",
+      "price": "375,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/55999386244351065662.webp",
+      "link": "https://styleeno.nadikala.com/product-624/mustang-agnetic-obile-older",
       "source": "styleeno",
       "category": "لوازم خودرو"
     },
     {
-      "name": "کیف زباله خودرو",
-      "price": "100,00079,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/68741312716491592513.webp",
-      "link": "https://styleeno.nadikala.com/product-265/car-seat-back-garbage-bags",
+      "name": "سر والف شبرنگ خودرو و موتورسیکلت بسته 4 عددی",
+      "price": "47,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/25218980697085077114.webp",
+      "link": "https://styleeno.nadikala.com/product-325/luminous-gas-cap",
       "source": "styleeno",
       "category": "لوازم خودرو"
     },
     {
-      "name": "پایه نگهدارنده گوشی روی فرمان خودرو",
-      "price": "100,00097,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/36296674899341230596.webp",
-      "link": "https://styleeno.nadikala.com/product-987/steering-wheel-phone-holder",
+      "name": "دستگاه مکنده صافکاری PDR",
+      "price": "145,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/5873076111929094851.webp",
+      "link": "https://styleeno.nadikala.com/product-469/pdr-smoothing-suction-device",
       "source": "styleeno",
       "category": "لوازم خودرو"
     },
     {
-      "name": "هولدر موبایل 360 درجه مدل سایبان خودرو",
-      "price": "390,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/58011197964503585479.webp",
-      "link": "https://styleeno.nadikala.com/product-434/sun-visor-cellphone-holder",
+      "name": "سطل زباله درب دار لیوانی خودرو",
+      "price": "230,000207,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/77869402997435021969.webp",
+      "link": "https://styleeno.nadikala.com/product-403/car-trash-cup",
       "source": "styleeno",
       "category": "لوازم خودرو"
     },
@@ -555,12 +539,28 @@
       "category": "لوازم خودرو"
     },
     {
-      "name": "سر والف شبرنگ خودرو و موتورسیکلت بسته 4 عددی",
-      "price": "47,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/25218980697085077114.webp",
-      "link": "https://styleeno.nadikala.com/product-325/luminous-gas-cap",
+      "name": "کیف زباله خودرو",
+      "price": "100,00079,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/68741312716491592513.webp",
+      "link": "https://styleeno.nadikala.com/product-265/car-seat-back-garbage-bags",
       "source": "styleeno",
       "category": "لوازم خودرو"
+    },
+    {
+      "name": "هولدر موبایل 360 درجه مدل سایبان خودرو",
+      "price": "390,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/58011197964503585479.webp",
+      "link": "https://styleeno.nadikala.com/product-434/sun-visor-cellphone-holder",
+      "source": "styleeno",
+      "category": "لوازم خودرو"
+    },
+    {
+      "name": "برس حرفه ای تمیزکننده چندکاره خودرو و لوازم",
+      "price": "170,000119,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/84870734885110251438.webp",
+      "link": "https://styleeno.nadikala.com/product-542/car-interior-cleaning-brush",
+      "source": "styleeno",
+      "category": "ابزار"
     },
     {
       "name": "دستکش پرزگیر حیوانات خانگی مدل PISHAN",
@@ -723,50 +723,18 @@
       "category": "سلامت"
     },
     {
-      "name": "باکس جواهرات مدل لاکچری E32",
-      "price": "390,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/81544789759635175593.webp",
-      "link": "https://styleeno.nadikala.com/product-697/luxury-jewelry-box-e32",
+      "name": "چوب لباسی مسافرتی تاشو قابل حمل بسته 2 عددی",
+      "price": "220,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/62970320654987453636.webp",
+      "link": "https://styleeno.nadikala.com/product-808/foldable-travel-hanger-portable-2-pack",
       "source": "styleeno",
       "category": "لوازم خودرو"
     },
     {
-      "name": "جوراب طرح کتانی آل استار",
-      "price": "115,000112,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/6645270677421067120.webp",
-      "link": "https://styleeno.nadikala.com/product-631/all-star-inspired-sneaker-socks",
-      "source": "styleeno",
-      "category": "لوازم خودرو"
-    },
-    {
-      "name": "سشوار مسافرتی مدل NOVA توان 1000 وات",
-      "price": "500,000450,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/35053473458987095060.webp",
-      "link": "https://styleeno.nadikala.com/product-911/novatravel-hair-dryer-1000w",
-      "source": "styleeno",
-      "category": "لوازم خودرو"
-    },
-    {
-      "name": "اتومایزر شارژی عطر و ادکلن",
-      "price": "125,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/3162838577702190069.webp",
-      "link": "https://styleeno.nadikala.com/product-1022/rechargeable-perfume-atomizer",
-      "source": "styleeno",
-      "category": "لوازم خودرو"
-    },
-    {
-      "name": "نگهدارنده و آویز کیف داخل کمد مدل 3 طبقه",
-      "price": "200,000190,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/1238182834895531362.webp",
-      "link": "https://styleeno.nadikala.com/product-1018/3-tier-closet-bag-organizer-hanger",
-      "source": "styleeno",
-      "category": "لوازم خودرو"
-    },
-    {
-      "name": "پد آرایش پاک کن ایپک بسته 70 عددی",
-      "price": "180,000135,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/61690580962731033605.webp",
-      "link": "https://styleeno.nadikala.com/product-213/ipek-makeup-remover-cotton-pads-70-pcs",
+      "name": "رخت آویز 5 طبقه رگالی مدل تمام استیل",
+      "price": "400,000376,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/80361645008267958606.webp",
+      "link": "https://styleeno.nadikala.com/product-737/5-tier-steel-clothing-rack",
       "source": "styleeno",
       "category": "لوازم خودرو"
     },
@@ -776,21 +744,21 @@
       "image": "https://styleeno.nadikala.com/images/tpl/79479503556902945840.webp",
       "link": "https://styleeno.nadikala.com/product-732/rechargeable-electric-lighter",
       "source": "styleeno",
-      "category": "لوازم خودرو"
+      "category": "روشنایی"
     },
     {
-      "name": "هولدر موبایل جلو داشبورد و سایه بان",
-      "price": "300,000270,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/61026306815386598822.webp",
-      "link": "https://styleeno.nadikala.com/product-237/ceuta-car-phone-holder-mount",
+      "name": "بالشتک محافظ پشت پا بسته 2 عددی",
+      "price": "100,00095,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/36694742306259522582.webp",
+      "link": "https://styleeno.nadikala.com/product-834/heel-protector-pad-2-pack",
       "source": "styleeno",
       "category": "لوازم خودرو"
     },
     {
-      "name": "دستگاه مکنده صافکاری PDR",
-      "price": "145,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/5873076111929094851.webp",
-      "link": "https://styleeno.nadikala.com/product-469/pdr-smoothing-suction-device",
+      "name": "نظم دهنده سیلیکونی چند منظوره سیم",
+      "price": "100,00065,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/47808692791714010457.webp",
+      "link": "https://styleeno.nadikala.com/product-277/winged-silicone-organizer-and-wire-gatherer",
       "source": "styleeno",
       "category": "لوازم خودرو"
     },
@@ -799,6 +767,22 @@
       "price": "775,000620,000",
       "image": "https://styleeno.nadikala.com/images/tpl/81182420865978875598.webp",
       "link": "https://styleeno.nadikala.com/product-101/supercharg-shower-head",
+      "source": "styleeno",
+      "category": "لوازم خودرو"
+    },
+    {
+      "name": "آینه محدب نقطه کور قابل تنظیم خودرو مدل E360 بسته 2 عددی",
+      "price": "200,000150,000",
+      "image": "https://styleeno.nadikala.com/images/tpl/87548610477741953607.webp",
+      "link": "https://styleeno.nadikala.com/product-536/car-blind-spot-360-mirror-glue-2pcs",
+      "source": "styleeno",
+      "category": "لوازم خودرو"
+    },
+    {
+      "name": "پشت صندلی راحتی خودرو مدل LEU",
+      "price": "500,000450,000",
+      "image": "https://styleeno.nadikala.com/./upload/product/2026/08/psht-sndly-rahty-khvdrv-mdl-leu.webp",
+      "link": "https://styleeno.nadikala.com/product-1024/leu-car-seat-backrest",
       "source": "styleeno",
       "category": "لوازم خودرو"
     },
@@ -855,14 +839,6 @@
       "price": "700,000630,000",
       "image": "https://styleeno.nadikala.com/images/tpl/72508311747074958418.webp",
       "link": "https://styleeno.nadikala.com/product-401/7-egg-cooker",
-      "source": "styleeno",
-      "category": "لوازم خودرو"
-    },
-    {
-      "name": "نظم دهنده سیلیکونی چند منظوره سیم",
-      "price": "100,00065,000",
-      "image": "https://styleeno.nadikala.com/images/tpl/47808692791714010457.webp",
-      "link": "https://styleeno.nadikala.com/product-277/winged-silicone-organizer-and-wire-gatherer",
       "source": "styleeno",
       "category": "لوازم خودرو"
     },
