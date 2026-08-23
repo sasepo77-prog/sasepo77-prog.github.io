@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه محصولات</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .product-card h3 {
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: #333;
+            height: 50px;
+            overflow: hidden;
+        }
+        .product-card .price {
+            font-size: 1.2em;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .product-card .source {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 12px;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9em;
+            width: 100%;
+            text-align: center;
+            transition: opacity 0.3s;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+        .no-image {
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5em; }
+            .stats { gap: 15px; }
+            .stat-item { font-size: 0.9em; padding: 5px 15px; }
+            .products-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+            .product-card { padding: 12px; }
+            .product-card h3 { font-size: 0.85em; height: 40px; }
+        }
+        @media (max-width: 400px) {
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛍️ فروشگاه محصولات</h1>
+            <p>جدیدترین محصولات از فروشگاه‌های معتبر</p>
+            <div class="stats">
+                <span class="stat-item">📦 146 محصول</span>
+                <span class="stat-item">🔄 بروزرسانی: 2026/08/23 17:39</span>
+            </div>
+        </header>
+        
+        <div class="products-grid">
+            
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2094/product_220.jpg" alt="ست تیشرت شلوار آستین بلند مشکی زرد JORDAN  مدل 2094" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوار آستین بلند مشکی زرد JORDAN  مدل 209...</h3>
+            <p class="price">839 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2094" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2093/product_220.jpg" alt="ست تیشرت شلوار بچگانه آستین بلند JORDAN مدل 2093" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوار بچگانه آستین بلند JORDAN مدل 2093</h3>
+            <p class="price">549 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2093" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2092/product_220.jpg" alt="ست تیشرت شلوار مشکی زرد پدر پسری JORDAN مدل 2092" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوار مشکی زرد پدر پسری JORDAN مدل 2092</h3>
+            <p class="price">1,379 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2092" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2091/product_220.jpg" alt="تیشرت نیم زیپ آستین کوتاه مشکی یقه سفید NB مدل 2091" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>تیشرت نیم زیپ آستین کوتاه مشکی یقه سفید NB مدل 209...</h3>
+            <p class="price">429 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2091" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2090/product_220.jpg" alt="ست تیشرت شلوارک بیسکوئیتی طوسی پدر پسری مدل 2090" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوارک بیسکوئیتی طوسی پدر پسری مدل 2090</h3>
+            <p class="price">1,379 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2090" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2089/product_220.jpg" alt="ست تیشرت شلوارک دخترانه کرم قهوه ای Kuromi مدل 2089" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوارک دخترانه کرم قهوه ای Kuromi مدل 208...</h3>
+            <p class="price">499 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2089" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2088/product_220.jpg" alt="ست تیشرت شلوارک بیسکوئیتی طوسی مدل 2088" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوارک بیسکوئیتی طوسی مدل 2088</h3>
+            <p class="price">839 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2088" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2087/product_220.jpg" alt="ست تیشرت شلوارک بیسکوئیتی سورمه ای پدر پسری مدل 2087" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوارک بیسکوئیتی سورمه ای پدر پسری مدل 20...</h3>
+            <p class="price">1,379 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2087" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2086/product_220.jpg" alt="ست تیشرت شلوارک بچگانه بیسکوئیتی سورمه ای مدل 2086" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوارک بچگانه بیسکوئیتی سورمه ای مدل 2086</h3>
+            <p class="price">549 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2086" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2084/product_220.jpg" alt="ست تیشرت شلوار مشکی سفید balenciaga مدل 2084" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوار مشکی سفید balenciaga مدل 2084</h3>
+            <p class="price">799 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2084" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2083/product_220.jpg" alt="کوله پشتی PUMA مشکی قرمز مدل 2083" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>کوله پشتی PUMA مشکی قرمز مدل 2083</h3>
+            <p class="price">749 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2083" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2082/product_220.jpg" alt="ست تیشرت شلوار کبریتی مشکی سفید Zara مدل 2082" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوار کبریتی مشکی سفید Zara مدل 2082</h3>
+            <p class="price">1,379 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2082" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2081/product_220.jpg" alt="تیشرت آستین کوتاه مشکی VERSACE مدل 2081" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>تیشرت آستین کوتاه مشکی VERSACE مدل 2081</h3>
+            <p class="price">559 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2081" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2080/product_220.jpg" alt="ست تیشرت شلوار کبریتی قهوه ای سفید Zara مدل 2080" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوار کبریتی قهوه ای سفید Zara مدل 2080</h3>
+            <p class="price">1,379 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2080" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2079/product_220.jpg" alt="ست تیشرت شلوارک بیسکوئیتی سورمه ای eleven degrees مدل 2079" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوارک بیسکوئیتی سورمه ای eleven degrees ...</h3>
+            <p class="price">839 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2079" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2078/product_220.jpg" alt="ست تیشرت شلوار مشکی سفید eleven degrees مدل 2078" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوار مشکی سفید eleven degrees مدل 2078</h3>
+            <p class="price">799 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2078" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2074/product_220.jpg" alt="ست تیشرت شلوار مشکی زرد JORDAN مدل 2074" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوار مشکی زرد JORDAN مدل 2074</h3>
+            <p class="price">799,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2074" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2072/product_220.jpg" alt="تیشرت نیم زیپ آستین کوتاه مشکی NB مدل 2072" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>تیشرت نیم زیپ آستین کوتاه مشکی NB مدل 2072</h3>
+            <p class="price">429,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2072" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2070/product_220.jpg" alt="ست تیشرت شلوارک لش FILA مدل 2070" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوارک لش FILA مدل 2070</h3>
+            <p class="price">899,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2070" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2059/product_220.jpg" alt="ست تیشرت شلوار آستین بلند مشکی زرد new balance مدل 2059" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوار آستین بلند مشکی زرد new balance مدل...</h3>
+            <p class="price">799,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2059" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2056/product_220.jpg" alt="ست تیشرت شلوار لش BALANCIGA مدل 2056" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوار لش BALANCIGA مدل 2056</h3>
+            <p class="price">899,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2056" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2038/product_220.jpg" alt="ست تیشرت شلوار آستین کوتاه مشکی سفید NASA مدل 2038" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوار آستین کوتاه مشکی سفید NASA مدل 2038</h3>
+            <p class="price">779,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2038" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2036/product_220.jpg" alt="ست تیشرت شلوار آستین کوتاه کلاهدار مشکی PERSIAN GULF مدل 2036" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست تیشرت شلوار آستین کوتاه کلاهدار مشکی PERSIAN GU...</h3>
+            <p class="price">829,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2036" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2069/product_220.jpg" alt="پیراهن مردانه آستین کوتاه مشکی مدل 2069" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه آستین کوتاه مشکی مدل 2069</h3>
+            <p class="price">549,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2069" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2065/product_220.jpg" alt="پیراهن مردانه مراکشی آستین کوتاه شکلاتی مدل 2065" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه مراکشی آستین کوتاه شکلاتی مدل 2065</h3>
+            <p class="price">659,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2065" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2061/product_220.jpg" alt="پیراهن مردانه مراکشی آستین کوتاه سورمه ای مدل 2061" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه مراکشی آستین کوتاه سورمه ای مدل 2061</h3>
+            <p class="price">649,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2061" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2057/product_220.jpg" alt="پیراهن مردانه آستین بلند چاپی سفید قهوه ای مدل 2057" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه آستین بلند چاپی سفید قهوه ای مدل 205...</h3>
+            <p class="price">619,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2057" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2048/product_220.jpg" alt="پیراهن مردانه آستین بلند لی آبی روشن مدل 2048" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه آستین بلند لی آبی روشن مدل 2048</h3>
+            <p class="price">779,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2048" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2044/product_220.jpg" alt="پیراهن مردانه آستین بلند سورمه ای مدل 2044" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه آستین بلند سورمه ای مدل 2044</h3>
+            <p class="price">579,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2044" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2043/product_220.jpg" alt="پیراهن مردانه آستین بلند مشکی مدل 2043" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه آستین بلند مشکی مدل 2043</h3>
+            <p class="price">599,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2043" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2042/product_220.jpg" alt="پیراهن مردانه آستین بلند لی آبی مدل 2042" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه آستین بلند لی آبی مدل 2042</h3>
+            <p class="price">779,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2042" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2032/product_220.jpg" alt="پیراهن مردانه آستین کوتاه کرم شکلاتی مدل 2032" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه آستین کوتاه کرم شکلاتی مدل 2032</h3>
+            <p class="price">559,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2032" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2030/product_220.jpg" alt="پیراهن مردانه آستین بلند سفید مشکی کنف مدل 2030" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه آستین بلند سفید مشکی کنف مدل 2030</h3>
+            <p class="price">699,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2030" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2022/product_220.jpg" alt="پیراهن مردانه آستین بلند سبز مدل 2022" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه آستین بلند سبز مدل 2022</h3>
+            <p class="price">579,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2022" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2021/product_220.jpg" alt="پیراهن مردانه آستین بلند مشکی سبز مدل 2021" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه آستین بلند مشکی سبز مدل 2021</h3>
+            <p class="price">579,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2021" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2020/product_220.jpg" alt="پیراهن آستین کوتاه مردانه سفید آبی چاپی مدل 2020" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن آستین کوتاه مردانه سفید آبی چاپی مدل 2020</h3>
+            <p class="price">549,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2020" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2019/product_220.jpg" alt="پیراهن آستین کوتاه مردانه سفید مشکی چاپی مدل 2019" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن آستین کوتاه مردانه سفید مشکی چاپی مدل 2019</h3>
+            <p class="price">549,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2019" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/1954/product_220.jpg" alt="پیراهن آستین کوتاه مردانه اناری کنف کش مدل 1954" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن آستین کوتاه مردانه اناری کنف کش مدل 1954</h3>
+            <p class="price">529,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/1954" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/1943/product_220.jpg" alt="پیراهن مردانه آستین بلند مشکی طوسی مدل 1943" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>پیراهن مردانه آستین بلند مشکی طوسی مدل 1943</h3>
+            <p class="price">529,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/1943" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/2025/product_220.jpg" alt="ست سویشرت شلوار کلاهدار مشکی سفید Emirates مدل 2025" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست سویشرت شلوار کلاهدار مشکی سفید Emirates مدل 202...</h3>
+            <p class="price">979,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/2025" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/1491/product_220.jpg" alt="سویشرت آستین کوتاه سفید TOKYO مدل 1491" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>سویشرت آستین کوتاه سفید TOKYO مدل 1491</h3>
+            <p class="price">599,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/1491" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/1996/product_220.jpg" alt="ست سویشرت شلوار کلاهدار مشکی سفید Diesel مدل 1996" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست سویشرت شلوار کلاهدار مشکی سفید Diesel مدل 1996</h3>
+            <p class="price">979,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/1996" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/1327/product_220.jpg" alt="هودی مشکی مردانه Y-3 مدل 1327" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>هودی مشکی مردانه Y-3 مدل 1327</h3>
+            <p class="price">368,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/1327" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/1937/product_220.jpg" alt="ست سویشرت شلوار مشکی ریبوک مدل 1937" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست سویشرت شلوار مشکی ریبوک مدل 1937</h3>
+            <p class="price">949,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/1937" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/1933/product_220.jpg" alt="ست سویشرت شلوار کلاهدار مشکی قرمز Reebook مدل 1933" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست سویشرت شلوار کلاهدار مشکی قرمز Reebook مدل 1933</h3>
+            <p class="price">979,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/1933" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/1860/product_220.jpg" alt="سویشرت آستین کوتاه زغال سنگی Adidas مدل 1860" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>سویشرت آستین کوتاه زغال سنگی Adidas مدل 1860</h3>
+            <p class="price">479,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/1860" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/1814/product_220.jpg" alt="سویشرت آستین بلند مشکی Adidas مدل 1814" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>سویشرت آستین بلند مشکی Adidas مدل 1814</h3>
+            <p class="price">699,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/1814" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/1788/product_220.jpg" alt="ست هودی شلوار کلاه دار قرمز مشکی Nike مدل 1788" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>ست هودی شلوار کلاه دار قرمز مشکی Nike مدل 1788</h3>
+            <p class="price">498,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/1788" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/1277/product_220.jpg" alt="بلوز مردانه آستین بلند طوسی مدل 1277" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>بلوز مردانه آستین بلند طوسی مدل 1277</h3>
+            <p class="price">588,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/1277" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://varioshop.manamod.com/public/images/products/1468/product_220.jpg" alt="سویشرت آستین کوتاه چهارخانه سفید مشکی مدل 1468" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+            <h3>سویشرت آستین کوتاه چهارخانه سفید مشکی مدل 1468</h3>
+            <p class="price">599,000 هزارتومان</p>
+            <p class="source">🏷️ varioshop</p>
+            <a href="https://varioshop.manamod.com/products/info/1468" target="_blank" class="btn">مشاهده و خرید</a>
+        </div>
+        
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 - تمامی حقوق محفوظ است | <a href="https://github.com" target="_blank">مشاهده در گیت‌هاب</a></p>
+        </div>
+    </div>
+</body>
+</html>
