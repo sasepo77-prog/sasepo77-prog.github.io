@@ -227,12 +227,190 @@
         }
         
         /* ============================================
-           PRODUCTS
+           CATEGORY SECTIONS (اسلایدر افقی)
            ============================================ */
         .products-section {
             max-width: 1400px;
             margin: 0 auto 50px;
             padding: 0 30px;
+        }
+        
+        .category-section {
+            margin-bottom: 40px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px 0 20px 20px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            border: 1px solid #eef0f4;
+        }
+        
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px 16px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .category-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .category-icon {
+            font-size: 24px;
+        }
+        
+        .category-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1a1a2e;
+        }
+        
+        .category-count {
+            font-size: 12px;
+            color: #868e96;
+            background: #f1f3f5;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        .category-view-all {
+            font-size: 13px;
+            color: #f7971e;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: rgba(247,151,30,0.08);
+            cursor: pointer;
+        }
+        
+        .category-view-all:hover {
+            background: rgba(247,151,30,0.15);
+        }
+        
+        .horizontal-scroll {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            padding: 4px 20px 12px 0;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .horizontal-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+        
+        .horizontal-scroll::-webkit-scrollbar-thumb {
+            background: #ffd700;
+            border-radius: 10px;
+        }
+        
+        .h-product-card {
+            flex: 0 0 180px;
+            min-width: 160px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid transparent;
+        }
+        
+        .h-product-card:hover {
+            transform: translateY(-3px);
+            border-color: #ffd700;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        
+        .h-product-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+        
+        .h-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .h-product-card:hover .h-product-image img {
+            transform: scale(1.03);
+        }
+        
+        .h-product-info {
+            padding-top: 10px;
+        }
+        
+        .h-product-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1a1a2e;
+            height: 36px;
+            overflow: hidden;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .h-product-price {
+            display: block;
+            font-size: 15px;
+            font-weight: 800;
+            color: #e74c3c;
+            margin-top: 4px;
+        }
+        
+        .h-product-source {
+            display: block;
+            font-size: 10px;
+            color: #868e96;
+            margin-top: 2px;
+        }
+        
+        .h-product-link {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+        
+        /* ============================================
+           ALL PRODUCTS VIEW (محصولات کامل)
+           ============================================ */
+        #all-products-container {
+            display: none;
+        }
+        
+        #all-products-container.active {
+            display: block;
+        }
+        
+        .back-to-categories {
+            display: none;
+            padding: 8px 20px;
+            background: #f1f3f5;
+            border: none;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #495057;
+            cursor: pointer;
+            font-family: inherit;
+            margin-bottom: 16px;
+        }
+        
+        .back-to-categories:hover {
+            background: #e9ecef;
         }
         
         .products-grid {
@@ -241,9 +419,6 @@
             gap: 25px;
         }
         
-        /* ============================================
-           PRODUCT CARD
-           ============================================ */
         .product-card {
             background: #ffffff;
             border-radius: 18px;
@@ -472,10 +647,6 @@
             .brand-name {
                 font-size: 30px;
             }
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                gap: 18px;
-            }
             .filters-wrap {
                 flex-direction: column;
                 padding: 16px;
@@ -492,6 +663,14 @@
             .filters-wrap .btn-reset {
                 width: 100%;
                 justify-content: center;
+            }
+            .h-product-card {
+                flex: 0 0 150px;
+                min-width: 130px;
+            }
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 18px;
             }
         }
         
@@ -514,6 +693,24 @@
             .products-section {
                 padding: 0 16px;
                 margin: 0 auto 30px;
+            }
+            .h-product-card {
+                flex: 0 0 130px;
+                min-width: 110px;
+                padding: 8px;
+            }
+            .h-product-title {
+                font-size: 11px;
+                height: 30px;
+            }
+            .h-product-price {
+                font-size: 13px;
+            }
+            .category-title {
+                font-size: 16px;
+            }
+            .category-section {
+                padding: 14px 0 14px 12px;
             }
             .products-grid {
                 grid-template-columns: 1fr 1fr;
@@ -553,6 +750,10 @@
         }
         
         @media (max-width: 400px) {
+            .h-product-card {
+                flex: 0 0 110px;
+                min-width: 100px;
+            }
             .products-grid {
                 grid-template-columns: 1fr;
                 gap: 16px;
@@ -592,7 +793,7 @@
             <div class="filter-group">
                 <i class="fas fa-tag"></i>
                 <select id="category-filter">
-                    <option value="all">همه دسته‌ها</option><option value="ابزار">ابزار</option><option value="بازی و سرگرمی">بازی و سرگرمی</option><option value="خانه و آشپزخانه">خانه و آشپزخانه</option><option value="روشنایی">روشنایی</option><option value="ساعت">ساعت</option><option value="سفر و کمپینگ">سفر و کمپینگ</option><option value="سلامت و زیبایی">سلامت و زیبایی</option><option value="لوازم الکترونیکی">لوازم الکترونیکی</option><option value="لوازم خانگی">لوازم خانگی</option><option value="لوازم خودرو">لوازم خودرو</option><option value="پوشاک">پوشاک</option><option value="کفش">کفش</option><option value="کیف و کاور">کیف و کاور</option><option value="متفرقه">متفرقه</option>
+                    <option value="all">همه دسته‌ها</option><option value="پوشاک">پوشاک</option><option value="کفش">کفش</option><option value="کیف و کاور">کیف و کاور</option><option value="روشنایی">روشنایی</option><option value="لوازم خودرو">لوازم خودرو</option><option value="ساعت">ساعت</option><option value="ابزار">ابزار</option><option value="خانه و آشپزخانه">خانه و آشپزخانه</option><option value="سلامت و زیبایی">سلامت و زیبایی</option><option value="لوازم خانگی">لوازم خانگی</option><option value="لوازم الکترونیکی">لوازم الکترونیکی</option><option value="بازی و سرگرمی">بازی و سرگرمی</option><option value="سفر و کمپینگ">سفر و کمپینگ</option><option value="متفرقه">متفرقه</option>
                 </select>
             </div>
             <div class="filter-group">
@@ -614,11 +815,890 @@
     </section>
     
     <!-- ==========================================
-    PRODUCTS
+    CATEGORY SECTIONS (اسلایدر افقی)
     ========================================== -->
-    <section class="products-section">
-        <div class="products-grid" id="products-grid">
+    <section class="products-section" id="products-section">
+        <div id="categories-container">
             
+        <div class="category-section" data-category="پوشاک">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">👕</span>
+                    <h2 class="category-title">پوشاک</h2>
+                    <span class="category-count">217 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('پوشاک')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/550170988859914531.webp" alt="درمارولر ماساژ صورت و پوست سر 540 سوزن تیتانیومی" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">درمارولر ماساژ صورت و پوست سر ...</h4>
+                    <span class="h-product-price">275000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-557/540-needles-derma-roller" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/3137021382703493051.webp" alt="ماساژور همه کاره رفع خستگی بدن و عضلات" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">ماساژور همه کاره رفع خستگی بدن...</h4>
+                    <span class="h-product-price">275000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-204/ems-muscle-booster-massager" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/8675679819703514227.webp" alt="برس ماساژور پاکسازی 5 کاره پوست" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">برس ماساژور پاکسازی 5 کاره پوس...</h4>
+                    <span class="h-product-price">490000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-405/5in1-beauty-care-massager" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/2632690328684863968.webp" alt="جوراب سیلیکونی ژله ای ترک پا" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">جوراب سیلیکونی ژله ای ترک پا</h4>
+                    <span class="h-product-price">365000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-138/gel-socks-soft-moisturizing" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/13119711329691255364.webp" alt="جوراب طبی سلامتی و لاغری ترومالین" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">جوراب طبی سلامتی و لاغری تروما...</h4>
+                    <span class="h-product-price">175000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-418/tourmaline-slimming-health-sock" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="متفرقه">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">📦</span>
+                    <h2 class="category-title">متفرقه</h2>
+                    <span class="category-count">138 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('متفرقه')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/8385695717775827848.webp" alt="پشت خارون جمع شونده مسافرتی" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">پشت خارون جمع شونده مسافرتی</h4>
+                    <span class="h-product-price">125000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-675/travel-foldable-back-scratcher" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/92521115946306877932.webp" alt="پد محافظ پاشنه پا مدل سیلیکونی" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">پد محافظ پاشنه پا مدل سیلیکونی</h4>
+                    <span class="h-product-price">136000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-944/silicone-heel-protector-pad" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/39708967943810732535.webp" alt="ژل افزایش دهنده قد 4 سانتی متری مدل Btall" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">ژل افزایش دهنده قد 4 سانتی متر...</h4>
+                    <span class="h-product-price">135000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-148/height-increasing-insoles-4-inches" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/87482865035030821297.webp" alt="مسواک سیلیکونی چرخشی فرم دندان کودک" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">مسواک سیلیکونی چرخشی فرم دندان...</h4>
+                    <span class="h-product-price">145000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-136/baby-toothbrush-children-360-degree-u-shaped" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/785914302492189401.webp" alt="براش پاکسازی سیلیکونی چندمنظوره مدل انگشتی" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">براش پاکسازی سیلیکونی چندمنظور...</h4>
+                    <span class="h-product-price">57000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-725/brush-silicone-cleansing-multipurpose-finger-model" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="کفش">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">👟</span>
+                    <h2 class="category-title">کفش</h2>
+                    <span class="category-count">50 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('کفش')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/./upload/product/2026/08/psht-sndly-rahty-khvdrv-mdl-leu.webp" alt="پشت صندلی راحتی خودرو مدل LEU" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">پشت صندلی راحتی خودرو مدل LEU</h4>
+                    <span class="h-product-price">450000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-1024/leu-car-seat-backrest" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3496/MeduimImages/zmp-3496_m_01123826.jpg" alt="لگ ورزشی NewBalane_Chrikiمدل 3496" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">لگ ورزشی NewBalane_Chrikiمدل 3...</h4>
+                    <span class="h-product-price">696000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3496/لگ-ورزشی-NewBalane_Chriki-مدل-3496?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3973/MeduimImages/zmp-3973_m_08091114.jpg" alt="صندل مردانه Sina_Blackمدل 3973" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">صندل مردانه Sina_Blackمدل 3973</h4>
+                    <span class="h-product-price">999000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3973/صندل-مردانه-Sina_Black-مدل-3973?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3929/MeduimImages/zmp-3929_m_15095541.jpg" alt="صندل مردانه Sina_Brownمدل 3929" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">صندل مردانه Sina_Brownمدل 3929</h4>
+                    <span class="h-product-price">969000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3929/صندل-مردانه-Sina_Brown-مدل-3929?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3925/MeduimImages/zmp-3925_m_21121954.jpg" alt="صندل زنانه Ronakمدل 3925" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">صندل زنانه Ronakمدل 3925</h4>
+                    <span class="h-product-price">879000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3925/صندل-زنانه-Ronak-مدل-3925?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="کیف و کاور">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">👜</span>
+                    <h2 class="category-title">کیف و کاور</h2>
+                    <span class="category-count">10 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('کیف و کاور')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/2672131282504071594.webp" alt="کیسه آبگرم مسافرتی طرح فانتزی خرگوشی" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">کیسه آبگرم مسافرتی طرح فانتزی ...</h4>
+                    <span class="h-product-price">357000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-806/travel-hot-water-bag-rabbit" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/52395555607334457092.webp" alt="باکس ضدآب دیواری نگهدارنده موبایل" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">باکس ضدآب دیواری نگهدارنده موب...</h4>
+                    <span class="h-product-price">380000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-669/wall-mounted-phone-box" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/45706121439370930397.webp" alt="پایه نگهدارنده موبایل کنار لپ تاپ و مانیتور آهنربایی مدل فلزی" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">پایه نگهدارنده موبایل کنار لپ ...</h4>
+                    <span class="h-product-price">390000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-1010/aluminum-magnetic-phone-stand-for-laptop" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/62560549727177249275.webp" alt="نگهدارنده و هولدر موبایل رو میزی مدل فلزی" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">نگهدارنده و هولدر موبایل رو می...</h4>
+                    <span class="h-product-price">280000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-862/foldable-metal-phone-stand-for-desk" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/58011197964503585479.webp" alt="هولدر موبایل 360 درجه مدل سایبان خودرو" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">هولدر موبایل 360 درجه مدل سایب...</h4>
+                    <span class="h-product-price">390000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-434/sun-visor-cellphone-holder" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="روشنایی">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">💡</span>
+                    <h2 class="category-title">روشنایی</h2>
+                    <span class="category-count">9 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('روشنایی')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/79479503556902945840.webp" alt="فندک شارژی المنتی چراغ دار" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">فندک شارژی المنتی چراغ دار</h4>
+                    <span class="h-product-price">390000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-732/rechargeable-electric-lighter" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/4778896191789846358.webp" alt="لامپ جیبی LED" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">لامپ جیبی LED</h4>
+                    <span class="h-product-price">28000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-201/mini-night-usb-light-portable-led" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3965/MeduimImages/zmp-3965_m_16094859.jpg" alt="چراغ فانوس شارژی Coolمدل 3965" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">چراغ فانوس شارژی Coolمدل 3965</h4>
+                    <span class="h-product-price">1090000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3965/چراغ-فانوس-شارژی-Cool-مدل-3965?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3906/MeduimImages/zmp-3906_m_12123407.jpg" alt="چراغ شارژی Sananمدل 3906" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">چراغ شارژی Sananمدل 3906</h4>
+                    <span class="h-product-price">829000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3906/چراغ-شارژی-Sanan-مدل-3906?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3905/MeduimImages/zmp-3905_m_07090824.jpg" alt="چراغ شارژی اضطراری T330مدل 3905" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">چراغ شارژی اضطراری T330مدل 390...</h4>
+                    <span class="h-product-price">689000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3905/چراغ-شارژی-اضطراری-T330-مدل-3905?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="لوازم خودرو">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">🚗</span>
+                    <h2 class="category-title">لوازم خودرو</h2>
+                    <span class="category-count">8 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('لوازم خودرو')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/70421231437211211327.webp" alt="ماشین اصلاح و خط زن حرفه ای Vintage" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">ماشین اصلاح و خط زن حرفه ای Vi...</h4>
+                    <span class="h-product-price">590000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-241/professional-vintage-hair-trimmer" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/77869402997435021969.webp" alt="سطل زباله درب دار لیوانی خودرو" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">سطل زباله درب دار لیوانی خودرو</h4>
+                    <span class="h-product-price">207000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-403/car-trash-cup" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/81161829928637761056.webp" alt="نگهدارنده عینک خودرو مدل کلیپسی" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">نگهدارنده عینک خودرو مدل کلیپس...</h4>
+                    <span class="h-product-price">79000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-712/clip-on-car-glasses-holder" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3725/MeduimImages/zmp-3725_m_04104750.jpg" alt="خوشبو کننده خورشیدی خودرو Vehicleمدل 3725" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">خوشبو کننده خورشیدی خودرو Vehi...</h4>
+                    <span class="h-product-price">719000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3725/خوشبو-کننده-خورشیدی-خودرو-Vehicle-مدل-3725?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3252/MeduimImages/zmp-3252_m_06105034.jpg" alt="پنکه مه پاش FANUPمدل 3252" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">پنکه مه پاش FANUPمدل 3252</h4>
+                    <span class="h-product-price">1259000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3252/پنکه-مه-پاش-FANUP-مدل-3252?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="ساعت">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">⌚</span>
+                    <h2 class="category-title">ساعت</h2>
+                    <span class="category-count">8 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('ساعت')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/8520669726283920669.webp" alt="یخ خشک مسافرتی 10 ساعته" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">یخ خشک مسافرتی 10 ساعته</h4>
+                    <span class="h-product-price">150000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-831/travel-ice-pack-10-hours" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/2986/MeduimImages/zmp-2986_m_06035058.jpg" alt="لامپ هوشمند و اسپیکر بلوتوث Limoمدل 2986" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">لامپ هوشمند و اسپیکر بلوتوث Li...</h4>
+                    <span class="h-product-price">499000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/2986/لامپ-هوشمند-و-اسپیکر-بلوتوث-Limo-مدل-2986?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://varioshop.sabzgostar.biz/app/webroot/images/files/product/1783757271.jpg" alt="ساعت مچی مردانه مدل Geneve (دور نقره ای)کد 6563" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">ساعت مچی مردانه مدل Geneve (دو...</h4>
+                    <span class="h-product-price">998000</span>
+                    <span class="h-product-source">sabzgostar</span>
+                </div>
+                <a href="https://varioshop.sabzgostar.biz/Shop/product/6563/ساعت-مچی-مردانه-مدل-Geneve-(دور-نقره-ای)کد-6563" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://varioshop.sabzgostar.biz/app/webroot/images/files/product/1785586842.jpg" alt="ساعت HUBLOT طرح سه موتوره (کله غازی) کد 6576" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">ساعت HUBLOT طرح سه موتوره (کله...</h4>
+                    <span class="h-product-price">988000</span>
+                    <span class="h-product-source">sabzgostar</span>
+                </div>
+                <a href="https://varioshop.sabzgostar.biz/Shop/product/6576/ساعت-HUBLOT-طرح-سه-موتوره-(کله-غازی)-کد-6576" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://varioshop.sabzgostar.biz/app/webroot/images/files/product/1785658413.jpg" alt="ساعت مردانه مدل Tissot1853 (تمام مشکی)کد6581" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">ساعت مردانه مدل Tissot1853 (تم...</h4>
+                    <span class="h-product-price">989000</span>
+                    <span class="h-product-source">sabzgostar</span>
+                </div>
+                <a href="https://varioshop.sabzgostar.biz/Shop/product/6581/ساعت-مردانه-مدل-Tissot1853-(تمام-مشکی)کد6581" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="ابزار">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">🔧</span>
+                    <h2 class="category-title">ابزار</h2>
+                    <span class="category-count">6 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('ابزار')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/64310186311510385414.webp" alt="پد یدک ماساژور همه کاره مدل پروانه ای" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">پد یدک ماساژور همه کاره مدل پر...</h4>
+                    <span class="h-product-price">75000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-510/ems-muscle-booster-massager-pad" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/95326744731754536613.webp" alt="قیف خرطومی همه کاره" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">قیف خرطومی همه کاره</h4>
+                    <span class="h-product-price">125000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-532/flexible-draining-tool-scoop-funnel" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/59555650357099510325.webp" alt="توری کف شور چندکاره 5 عددی" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">توری کف شور چندکاره 5 عددی</h4>
+                    <span class="h-product-price">60000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-549/floor-sink-filter" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/2566155766543853532.webp" alt="برس و پرزگیر حیوانات مدل 2 کاره" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">برس و پرزگیر حیوانات مدل 2 کار...</h4>
+                    <span class="h-product-price">540000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-887/dual-function-pet-brush" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3928/MeduimImages/zmp-3928_m_21020140.jpg" alt="جعبه آچار Settمدل 3928" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">جعبه آچار Settمدل 3928</h4>
+                    <span class="h-product-price">1195000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3928/جعبه-آچار-Sett-مدل-3928?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="خانه و آشپزخانه">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">🏠</span>
+                    <h2 class="category-title">خانه و آشپزخانه</h2>
+                    <span class="category-count">6 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('خانه و آشپزخانه')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/7313287952690650820.webp" alt="درب آفتابه ای بطری مدل Camping" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">درب آفتابه ای بطری مدل Camping</h4>
+                    <span class="h-product-price">97000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-589/portable-bottle-bidet-plastic" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3782/MeduimImages/zmp-3782_m_09121407.jpg" alt="تراول ماگ Stanley_Redمدل 3782" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">تراول ماگ Stanley_Redمدل 3782</h4>
+                    <span class="h-product-price">1859000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3782/تراول-ماگ-Stanley_Red-مدل-3782?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3780/MeduimImages/zmp-3780_m_09121517.jpg" alt="تراول ماگ Stanley_Purpleمدل 3780" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">تراول ماگ Stanley_Purpleمدل 37...</h4>
+                    <span class="h-product-price">1859000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3780/تراول-ماگ-Stanley_Purple-مدل-3780?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3779/MeduimImages/zmp-3779_m_09121548.jpg" alt="تراول ماگ Stanley_Pinkمدل 3779" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">تراول ماگ Stanley_Pinkمدل 3779</h4>
+                    <span class="h-product-price">1859000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3779/تراول-ماگ-Stanley_Pink-مدل-3779?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3778/MeduimImages/zmp-3778_m_09121626.jpg" alt="تراول ماگ Stanley_Magentaمدل 3778" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">تراول ماگ Stanley_Magentaمدل 3...</h4>
+                    <span class="h-product-price">1859000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3778/تراول-ماگ-Stanley_Magenta-مدل-3778?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="سلامت و زیبایی">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">💆</span>
+                    <h2 class="category-title">سلامت و زیبایی</h2>
+                    <span class="category-count">4 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('سلامت و زیبایی')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/32237133313552227405.webp" alt="ماساژور تفنگی مینی مدل Fascial Gun" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">ماساژور تفنگی مینی مدل Fascial...</h4>
+                    <span class="h-product-price">440000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-523/mini-fascial-gun" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/34709104919622083438.webp" alt="ماساژور و تنس عضلانی Health Herald مدل XTK-058" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">ماساژور و تنس عضلانی Health He...</h4>
+                    <span class="h-product-price">1196000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-586/digital-meridian-massager-xtk-058" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/96515942973073896997.webp" alt="براش مخصوص ماسک و ماساژ سیلیکونی دوطرفه پرزدار" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">براش مخصوص ماسک و ماساژ سیلیکو...</h4>
+                    <span class="h-product-price">63000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-685/dual-silicone-mask-brush" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3684/MeduimImages/zmp-3684_m_20093010.jpg" alt="قوزبند طبی ضربدری YIMYZمدل 3684" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">قوزبند طبی ضربدری YIMYZمدل 368...</h4>
+                    <span class="h-product-price">859000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3684/قوزبند-طبی-ضربدری-YIMYZ-مدل-3684?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="لوازم خانگی">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">🏡</span>
+                    <h2 class="category-title">لوازم خانگی</h2>
+                    <span class="category-count">3 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('لوازم خانگی')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/9123624519877869835.webp" alt="اپیلاتور حرفه ای مژه" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">اپیلاتور حرفه ای مژه</h4>
+                    <span class="h-product-price">180000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-852/professional-lash-epilator" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/35053473458987095060.webp" alt="سشوار مسافرتی مدل NOVA توان 1000 وات" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">سشوار مسافرتی مدل NOVA توان 10...</h4>
+                    <span class="h-product-price">450000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-911/novatravel-hair-dryer-1000w" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3758/MeduimImages/zmp-3758_m_01090541.jpg" alt="اتو صورت Ultraمدل 3758" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">اتو صورت Ultraمدل 3758</h4>
+                    <span class="h-product-price">759000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3758/اتو-صورت-Ultra-مدل-3758?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="لوازم الکترونیکی">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">📱</span>
+                    <h2 class="category-title">لوازم الکترونیکی</h2>
+                    <span class="category-count">2 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('لوازم الکترونیکی')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/92914851291587051667.webp" alt="هندزفری ارگونومیک بلوتوثی مدل کلیپسی" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">هندزفری ارگونومیک بلوتوثی مدل ...</h4>
+                    <span class="h-product-price">360000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-1013/ergonomic-clip-on-bluetooth-earbuds" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://img.zinosoft.ir/images/ProductImage/3059/MeduimImages/zmp-3059_m_13111043.jpg" alt="ایرپاد بلوتوثی M10مدل 3059" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">ایرپاد بلوتوثی M10مدل 3059</h4>
+                    <span class="h-product-price">889000</span>
+                    <span class="h-product-source">zinomod</span>
+                </div>
+                <a href="https://varioshop.zinomod.ir/product/3059/ایرپاد-بلوتوثی-M10-مدل-3059?sid=6076" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="بازی و سرگرمی">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">🎮</span>
+                    <h2 class="category-title">بازی و سرگرمی</h2>
+                    <span class="category-count">1 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('بازی و سرگرمی')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://styleeno.nadikala.com/images/tpl/70449425054820166105.webp" alt="تخته دارت سوزنی دو طرفه 17 سانتی متری" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">تخته دارت سوزنی دو طرفه 17 سان...</h4>
+                    <span class="h-product-price">87000</span>
+                    <span class="h-product-source">styleeno</span>
+                </div>
+                <a href="https://styleeno.nadikala.com/product-599/two-sided-needle-dartboard-17cm" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section" data-category="سفر و کمپینگ">
+            <div class="category-header">
+                <div class="category-title-wrap">
+                    <span class="category-icon">⛺</span>
+                    <h2 class="category-title">سفر و کمپینگ</h2>
+                    <span class="category-count">1 محصول</span>
+                </div>
+                <a href="#" class="category-view-all" onclick="showCategory('سفر و کمپینگ')">نمایش همه ›</a>
+            </div>
+            <div class="horizontal-scroll">
+                
+            <div class="h-product-card">
+                <div class="h-product-image">
+                    <img src="https://varioshop.manamod.com/public/images/products/2083/product_220.jpg" alt="کوله پشتی PUMA مشکی قرمز مدل 2083" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="h-product-info">
+                    <h4 class="h-product-title">کوله پشتی PUMA مشکی قرمز مدل 2...</h4>
+                    <span class="h-product-price">749</span>
+                    <span class="h-product-source">varioshop</span>
+                </div>
+                <a href="https://varioshop.manamod.com/products/info/2083" target="_blank" class="h-product-link"></a>
+            </div>
+            
+            </div>
+        </div>
+        
+        </div>
+        
+        <!-- ==========================================
+        ALL PRODUCTS VIEW (محصولات کامل)
+        ========================================== -->
+        <div id="all-products-container">
+            <button class="back-to-categories" id="back-to-categories" onclick="showCategories()">
+                <i class="fas fa-arrow-right"></i> بازگشت به دسته‌بندی‌ها
+            </button>
+            <div class="products-grid" id="all-products-grid">
+                
         <div class="product-card" data-price="75000" data-category="ابزار">
             <div class="product-image">
                 <img src="https://styleeno.nadikala.com/images/tpl/64310186311510385414.webp" alt="پد یدک ماساژور همه کاره مدل پروانه ای" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect width=%22300%22 height=%22300%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Tahoma%22 font-size=%2216%22 fill=%22%23999%22%3Eبدون تصویر%3C/text%3E%3C/svg%3E'">
@@ -11731,6 +12811,7 @@
             </div>
         </div>
         
+            </div>
         </div>
     </section>
     
@@ -11752,16 +12833,24 @@
         })();
         
         // ==========================================
-        // تمام محصولات
+        // نمایش همه محصولات یک دسته
         // ==========================================
-        const allProducts = document.querySelectorAll('.product-card');
-        
-        // ==========================================
-        // تابع اعمال فیلتر
-        // ==========================================
-        function applyFilters() {
+        function showCategory(category) {
+            // مخفی کردن دسته‌بندی‌ها
+            document.getElementById('categories-container').style.display = 'none';
+            
+            // نمایش دکمه بازگشت
+            document.getElementById('back-to-categories').style.display = 'inline-block';
+            
+            // نمایش همه محصولات
+            document.getElementById('all-products-container').classList.add('active');
+            
+            // تنظیم فیلتر دسته‌بندی
+            document.getElementById('category-filter').value = category;
+            
+            // اعمال فیلتر روی محصولات کامل
+            const allProducts = document.querySelectorAll('#all-products-grid .product-card');
             const search = document.getElementById('search-filter').value.toLowerCase().trim();
-            const category = document.getElementById('category-filter').value;
             const sort = document.getElementById('sort-filter').value;
             
             let visible = 0;
@@ -11784,7 +12873,7 @@
             });
             
             if (sort !== 'default') {
-                const grid = document.getElementById('products-grid');
+                const grid = document.getElementById('all-products-grid');
                 const cards = Array.from(products);
                 
                 cards.sort((a, b) => {
@@ -11800,18 +12889,49 @@
                 cards.forEach(card => grid.appendChild(card));
             }
             
-            let noMsg = document.getElementById('no-products-msg');
-            if (visible === 0) {
-                if (!noMsg) {
-                    noMsg = document.createElement('div');
-                    noMsg.id = 'no-products-msg';
-                    noMsg.className = 'no-products';
-                    noMsg.innerHTML = '<i class="fas fa-box-open"></i> هیچ محصولی با این فیلترها پیدا نشد!';
-                    document.getElementById('products-grid').appendChild(noMsg);
-                }
-                noMsg.style.display = 'block';
-            } else if (noMsg) {
-                noMsg.style.display = 'none';
+            // اسکرول به بالا
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // ==========================================
+        // بازگشت به دسته‌بندی‌ها
+        // ==========================================
+        function showCategories() {
+            document.getElementById('categories-container').style.display = 'block';
+            document.getElementById('all-products-container').classList.remove('active');
+            document.getElementById('back-to-categories').style.display = 'none';
+            document.getElementById('category-filter').value = 'all';
+            
+            // ریست فیلتر
+            applyFilters();
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // ==========================================
+        // تابع اعمال فیلتر (برای فیلترهای معمولی)
+        // ==========================================
+        function applyFilters() {
+            const search = document.getElementById('search-filter').value.toLowerCase().trim();
+            const category = document.getElementById('category-filter').value;
+            const sort = document.getElementById('sort-filter').value;
+            
+            // فقط اگر صفحه دسته‌بندی‌ها نمایش داده می‌شود
+            if (document.getElementById('categories-container').style.display !== 'none') {
+                const sections = document.querySelectorAll('.category-section');
+                sections.forEach(section => {
+                    const sectionCategory = section.dataset.category || '';
+                    const show = category === 'all' || sectionCategory === category;
+                    section.style.display = show ? 'block' : 'none';
+                    
+                    if (show) {
+                        const cards = section.querySelectorAll('.h-product-card');
+                        cards.forEach(card => {
+                            const name = card.querySelector('.h-product-title')?.textContent?.toLowerCase() || '';
+                            card.style.display = !search || name.includes(search) ? '' : 'none';
+                        });
+                    }
+                });
             }
         }
         
@@ -11823,20 +12943,11 @@
             document.getElementById('category-filter').value = 'all';
             document.getElementById('sort-filter').value = 'default';
             applyFilters();
-        }
-        
-        // ==========================================
-        // نمایش همه محصولات یک دسته
-        // ==========================================
-        function showCategory(category) {
-            // تنظیم فیلتر دسته‌بندی
-            document.getElementById('category-filter').value = category;
             
-            // اعمال فیلتر
-            applyFilters();
-            
-            // اسکرول به بالا
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // اگر در صفحه همه محصولات هستیم، دوباره اعمال کن
+            if (document.getElementById('all-products-container').classList.contains('active')) {
+                showCategory('all');
+            }
         }
         
         // ==========================================
