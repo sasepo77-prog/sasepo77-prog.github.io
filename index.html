@@ -135,12 +135,17 @@
         }
         
         /* ============================================
-           FILTERS
+           FILTERS - فقط در صفحه محصولات کامل
            ============================================ */
         .filters-section {
+            display: none;
             max-width: 1400px;
             margin: 25px auto 30px;
             padding: 0 30px;
+        }
+        
+        .filters-section.active {
+            display: block;
         }
         
         .filters-wrap {
@@ -152,7 +157,7 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 16px;
             align-items: center;
             border: 1px solid #292D52;
         }
@@ -160,23 +165,24 @@
         .filters-wrap .filter-group {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             flex: 1;
-            min-width: 150px;
+            min-width: 200px;
         }
         
         .filters-wrap .filter-group i {
-            color: #9DA2BF;
-            font-size: 15px;
+            color: #C83CFF;
+            font-size: 18px;
+            width: 20px;
         }
         
         .filters-wrap input {
-            padding: 10px 16px;
+            padding: 12px 18px;
             border: 1px solid #292D52;
             border-radius: 18px;
             font-size: 14px;
             flex: 1;
-            min-width: 130px;
+            min-width: 150px;
             background: #11142F;
             transition: all 0.3s ease;
             font-family: inherit;
@@ -195,12 +201,12 @@
         }
         
         .filters-wrap select {
-            padding: 10px 16px;
+            padding: 12px 18px;
             border: 1px solid #292D52;
             border-radius: 18px;
             font-size: 14px;
             flex: 1;
-            min-width: 130px;
+            min-width: 150px;
             background: #11142F;
             transition: all 0.3s ease;
             font-family: inherit;
@@ -223,45 +229,11 @@
             color: #FFFFFF;
         }
         
-        .filters-wrap .btn-filter {
-            padding: 10px 28px;
-            background: linear-gradient(135deg, #C026FF, #3D5CFF);
-            color: #FFFFFF;
-            border: none;
-            border-radius: 16px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 8px 30px rgba(192,38,255,0.25);
-        }
-        
-        .filters-wrap .btn-filter:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 40px rgba(192,38,255,0.4);
-            filter: brightness(1.1);
-        }
-        
-        .filters-wrap .btn-reset {
-            padding: 10px 24px;
-            background: #1D2142;
-            color: #C5C9DD;
-            border: 1px solid #292D52;
-            border-radius: 16px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-        
-        .filters-wrap .btn-reset:hover {
-            background: #292D52;
-            box-shadow: 0 0 25px rgba(192,38,255,0.1);
+        .filter-label {
+            color: #9DA2BF;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
         }
         
         /* ============================================
@@ -453,22 +425,29 @@
         
         .back-to-categories {
             display: none;
-            padding: 8px 20px;
-            background: #1D2142;
+            padding: 10px 24px;
+            background: rgba(17,20,47,0.8);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             border: 1px solid #292D52;
             border-radius: 16px;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             color: #C5C9DD;
             cursor: pointer;
             font-family: inherit;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             transition: all 0.3s ease;
         }
         
         .back-to-categories:hover {
-            background: #292D52;
+            background: #1D2142;
             box-shadow: 0 0 25px rgba(192,38,255,0.1);
+            border-color: #C026FF;
+        }
+        
+        .back-to-categories i {
+            margin-left: 8px;
         }
         
         .products-grid {
@@ -715,21 +694,15 @@
             .filters-wrap {
                 flex-direction: column;
                 padding: 16px;
-                backdrop-filter: blur(4px);
-                -webkit-backdrop-filter: blur(4px);
             }
             .filters-wrap .filter-group {
                 width: 100%;
+                min-width: unset;
             }
             .filters-wrap input,
             .filters-wrap select {
                 width: 100%;
                 min-width: unset;
-            }
-            .filters-wrap .btn-filter,
-            .filters-wrap .btn-reset {
-                width: 100%;
-                justify-content: center;
             }
             .h-product-card {
                 flex: 0 0 150px;
@@ -757,6 +730,18 @@
                 padding: 0 16px;
                 margin: 18px auto 22px;
             }
+            .filters-wrap {
+                padding: 14px;
+                gap: 12px;
+            }
+            .filters-wrap .filter-group {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+            }
+            .filter-label {
+                font-size: 12px;
+            }
             .products-section {
                 padding: 0 16px;
                 margin: 0 auto 30px;
@@ -778,8 +763,6 @@
             }
             .category-section {
                 padding: 14px 0 14px 12px;
-                backdrop-filter: blur(2px);
-                -webkit-backdrop-filter: blur(2px);
             }
             .products-grid {
                 grid-template-columns: 1fr 1fr;
@@ -820,13 +803,11 @@
                 font-size: 11px;
                 letter-spacing: 2px;
             }
-            .filters-wrap {
-                padding: 14px;
-            }
-            .filters-wrap .btn-filter,
-            .filters-wrap .btn-reset {
+            .back-to-categories {
+                width: 100%;
+                text-align: center;
                 font-size: 13px;
-                padding: 8px 16px;
+                padding: 10px 16px;
             }
         }
         
@@ -863,16 +844,16 @@
     </header>
     
     <!-- ==========================================
-    FILTERS
+    FILTERS - فقط در صفحه محصولات کامل
     ========================================== -->
-    <section class="filters-section">
+    <section class="filters-section" id="filters-section">
         <div class="filters-wrap">
             <div class="filter-group">
                 <i class="fas fa-search"></i>
-                <input type="text" id="search-filter" placeholder="جستجوی محصول...">
+                <input type="text" id="search-filter" placeholder="جستجو در محصولات...">
             </div>
             <div class="filter-group">
-                <i class="fas fa-sort"></i>
+                <i class="fas fa-sort-amount-down"></i>
                 <select id="sort-filter">
                     <option value="default">مرتب‌سازی</option>
                     <option value="price-asc">💰 قیمت: کم به زیاد</option>
@@ -880,12 +861,6 @@
                     <option value="name-asc">🔤 نام: الفبا</option>
                 </select>
             </div>
-            <button class="btn-filter" onclick="applyFilters()">
-                <i class="fas fa-check"></i> اعمال فیلتر
-            </button>
-            <button class="btn-reset" onclick="resetFilters()">
-                <i class="fas fa-undo"></i> ریست
-            </button>
         </div>
     </section>
     
@@ -12914,6 +12889,7 @@
             document.getElementById('categories-container').style.display = 'none';
             document.getElementById('back-to-categories').style.display = 'inline-block';
             document.getElementById('all-products-container').classList.add('active');
+            document.getElementById('filters-section').classList.add('active');
             applyFiltersOnAllProducts(category);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -12969,94 +12945,56 @@
         function showCategories() {
             document.getElementById('categories-container').style.display = 'block';
             document.getElementById('all-products-container').classList.remove('active');
+            document.getElementById('filters-section').classList.remove('active');
             document.getElementById('back-to-categories').style.display = 'none';
+            // ریست فیلترها هنگام بازگشت
+            document.getElementById('search-filter').value = '';
+            document.getElementById('sort-filter').value = 'default';
+            // نمایش مجدد همه محصولات
+            const allProducts = document.querySelectorAll('#all-products-grid .product-card');
+            allProducts.forEach(card => card.classList.remove('hidden'));
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         // ==========================================
-        // تابع اعمال فیلتر
+        // اعمال فیلتر (جستجو و مرتب‌سازی)
         // ==========================================
         function applyFilters() {
+            if (!document.getElementById('all-products-container').classList.contains('active')) return;
+            
             const search = document.getElementById('search-filter').value.toLowerCase().trim();
             const sort = document.getElementById('sort-filter').value;
+            const allProducts = document.querySelectorAll('#all-products-grid .product-card');
+            let products = [];
             
-            if (document.getElementById('all-products-container').classList.contains('active')) {
-                const allProducts = document.querySelectorAll('#all-products-grid .product-card');
-                let visible = 0;
-                let products = [];
+            allProducts.forEach(card => {
+                const name = card.querySelector('.product-title').textContent.toLowerCase();
+                const show = !search || name.includes(search);
                 
-                allProducts.forEach(card => {
-                    const name = card.querySelector('.product-title').textContent.toLowerCase();
-                    const show = !search || name.includes(search);
-                    
-                    if (show) {
-                        card.classList.remove('hidden');
-                        visible++;
-                        products.push(card);
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-                
-                if (sort !== 'default') {
-                    const grid = document.getElementById('all-products-grid');
-                    const cards = Array.from(products);
-                    
-                    cards.sort((a, b) => {
-                        const priceA = parseInt(a.dataset.price) || 0;
-                        const priceB = parseInt(b.dataset.price) || 0;
-                        if (sort === 'price-asc') return priceA - priceB;
-                        if (sort === 'price-desc') return priceB - priceA;
-                        return a.querySelector('.product-title').textContent.localeCompare(
-                            b.querySelector('.product-title').textContent
-                        );
-                    });
-                    
-                    cards.forEach(card => grid.appendChild(card));
-                }
-                
-                return;
-            }
-            
-            const sections = document.querySelectorAll('.category-section');
-            sections.forEach(section => {
-                const cards = section.querySelectorAll('.h-product-card');
-                let hasVisible = false;
-                
-                cards.forEach(card => {
-                    const name = card.querySelector('.h-product-title')?.textContent?.toLowerCase() || '';
-                    const show = !search || name.includes(search);
-                    card.style.display = show ? '' : 'none';
-                    if (show) hasVisible = true;
-                });
-                
-                section.style.display = hasVisible ? 'block' : 'none';
-            });
-        }
-        
-        // ==========================================
-        // ریست فیلترها
-        // ==========================================
-        function resetFilters() {
-            document.getElementById('search-filter').value = '';
-            document.getElementById('sort-filter').value = 'default';
-            
-            if (document.getElementById('all-products-container').classList.contains('active')) {
-                const allProducts = document.querySelectorAll('#all-products-grid .product-card');
-                allProducts.forEach(card => {
+                if (show) {
                     card.classList.remove('hidden');
-                });
-                return;
-            }
-            
-            const sections = document.querySelectorAll('.category-section');
-            sections.forEach(section => {
-                section.style.display = 'block';
-                const cards = section.querySelectorAll('.h-product-card');
-                cards.forEach(card => {
-                    card.style.display = '';
-                });
+                    products.push(card);
+                } else {
+                    card.classList.add('hidden');
+                }
             });
+            
+            if (sort !== 'default') {
+                const grid = document.getElementById('all-products-grid');
+                const cards = Array.from(products);
+                
+                cards.sort((a, b) => {
+                    const priceA = parseInt(a.dataset.price) || 0;
+                    const priceB = parseInt(b.dataset.price) || 0;
+                    if (sort === 'price-asc') return priceA - priceB;
+                    if (sort === 'price-desc') return priceB - priceA;
+                    return a.querySelector('.product-title').textContent.localeCompare(
+                        b.querySelector('.product-title').textContent
+                    );
+                });
+                
+                cards.forEach(card => grid.appendChild(card));
+            }
         }
         
         // ==========================================
@@ -13064,7 +13002,6 @@
         // ==========================================
         document.getElementById('search-filter').addEventListener('input', applyFilters);
         document.getElementById('sort-filter').addEventListener('change', applyFilters);
-        document.addEventListener('DOMContentLoaded', applyFilters);
     </script>
 </body>
 </html>
