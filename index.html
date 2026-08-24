@@ -142,6 +142,8 @@
             max-width: 1400px;
             margin: 25px auto 30px;
             padding: 0 30px;
+            position: relative;
+            z-index: 10;
         }
         
         .filters-section.active {
@@ -160,6 +162,8 @@
             gap: 16px;
             align-items: center;
             border: 1px solid #292D52;
+            position: relative;
+            z-index: 10;
         }
         
         .filters-wrap .filter-group {
@@ -202,12 +206,13 @@
         }
         
         /* ============================================
-           CUSTOM DROPDOWN - حرفه‌ای
+           CUSTOM DROPDOWN - حرفه‌ای با Z-index بالا
            ============================================ */
         .custom-dropdown {
             position: relative;
             flex: 1;
             min-width: 150px;
+            z-index: 100;
         }
         
         .dropdown-toggle {
@@ -264,8 +269,8 @@
             visibility: hidden;
             transform: translateY(-10px) scale(0.95);
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            z-index: 9999;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
@@ -303,12 +308,56 @@
         }
         
         /* ============================================
+           ALL PRODUCTS VIEW
+           ============================================ */
+        #all-products-container {
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+        
+        #all-products-container.active {
+            display: block;
+        }
+        
+        .back-to-categories {
+            display: none;
+            padding: 10px 24px;
+            background: rgba(17,20,47,0.8);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid #292D52;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #C5C9DD;
+            cursor: pointer;
+            font-family: inherit;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .back-to-categories:hover {
+            background: #1D2142;
+            box-shadow: 0 0 25px rgba(192,38,255,0.1);
+            border-color: #C026FF;
+        }
+        
+        .back-to-categories i {
+            margin-left: 8px;
+        }
+        
+        /* ============================================
            CATEGORY SECTIONS
            ============================================ */
         .products-section {
             max-width: 1400px;
             margin: 0 auto 50px;
             padding: 0 30px;
+            position: relative;
+            z-index: 1;
         }
         
         .category-section {
@@ -466,44 +515,6 @@
             position: absolute;
             inset: 0;
             z-index: 2;
-        }
-        
-        /* ============================================
-           ALL PRODUCTS VIEW
-           ============================================ */
-        #all-products-container {
-            display: none;
-        }
-        
-        #all-products-container.active {
-            display: block;
-        }
-        
-        .back-to-categories {
-            display: none;
-            padding: 10px 24px;
-            background: rgba(17,20,47,0.8);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: 1px solid #292D52;
-            border-radius: 16px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #C5C9DD;
-            cursor: pointer;
-            font-family: inherit;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .back-to-categories:hover {
-            background: #1D2142;
-            box-shadow: 0 0 25px rgba(192,38,255,0.1);
-            border-color: #C026FF;
-        }
-        
-        .back-to-categories i {
-            margin-left: 8px;
         }
         
         .products-grid {
@@ -872,6 +883,21 @@
                 padding: 8px 12px;
                 font-size: 13px;
             }
+            .dropdown-menu {
+                position: fixed;
+                top: auto;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                border-radius: 20px 20px 0 0;
+                padding: 16px;
+                max-height: 50vh;
+                overflow-y: auto;
+                transform: translateY(100%);
+            }
+            .dropdown-menu.open {
+                transform: translateY(0);
+            }
         }
         
         @media (max-width: 400px) {
@@ -927,13 +953,13 @@
                             <span class="item-icon">📋</span> پیش‌فرض
                         </div>
                         <div class="dropdown-item" data-value="price-asc" onclick="selectSort('price-asc', this)">
-                            <span class="item-icon">💰</span> قیمت: کم به زیاد
+                            <span class="item-icon">⬆️</span> ارزان‌تر
                         </div>
                         <div class="dropdown-item" data-value="price-desc" onclick="selectSort('price-desc', this)">
-                            <span class="item-icon">💰</span> قیمت: زیاد به کم
+                            <span class="item-icon">⬇️</span> گران‌تر
                         </div>
                         <div class="dropdown-item" data-value="name-asc" onclick="selectSort('name-asc', this)">
-                            <span class="item-icon">🔤</span> نام: الفبا
+                            <span class="item-icon">🔤</span> الفبا
                         </div>
                     </div>
                 </div>
