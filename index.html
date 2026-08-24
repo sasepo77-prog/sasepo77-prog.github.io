@@ -11752,10 +11752,13 @@
         })();
         
         // ==========================================
-        // فیلترها
+        // تمام محصولات
         // ==========================================
         const allProducts = document.querySelectorAll('.product-card');
         
+        // ==========================================
+        // تابع اعمال فیلتر
+        // ==========================================
         function applyFilters() {
             const search = document.getElementById('search-filter').value.toLowerCase().trim();
             const category = document.getElementById('category-filter').value;
@@ -11812,6 +11815,9 @@
             }
         }
         
+        // ==========================================
+        // ریست فیلترها
+        // ==========================================
         function resetFilters() {
             document.getElementById('search-filter').value = '';
             document.getElementById('category-filter').value = 'all';
@@ -11819,27 +11825,27 @@
             applyFilters();
         }
         
+        // ==========================================
+        // نمایش همه محصولات یک دسته
+        // ==========================================
+        function showCategory(category) {
+            // تنظیم فیلتر دسته‌بندی
+            document.getElementById('category-filter').value = category;
+            
+            // اعمال فیلتر
+            applyFilters();
+            
+            // اسکرول به بالا
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // ==========================================
+        // رویدادها
+        // ==========================================
         document.getElementById('search-filter').addEventListener('input', applyFilters);
         document.getElementById('category-filter').addEventListener('change', applyFilters);
         document.getElementById('sort-filter').addEventListener('change', applyFilters);
         document.addEventListener('DOMContentLoaded', applyFilters);
-        
-        // ==========================================
-        // نمایش همه محصولات یک دسته (با استفاده از فیلتر)
-        // ==========================================
-        function showCategory(category) {
-            // تنظیم فیلتر دسته‌بندی به همان دسته
-            document.getElementById('category-filter').value = category;
-            
-            // اجرای فیلتر
-            applyFilters();
-            
-            // نمایش پیام در کنسول
-            console.log('نمایش همه محصولات دسته: ' + category);
-            
-            // اسکرول به بالای صفحه
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
     </script>
 </body>
 </html>
