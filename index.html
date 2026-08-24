@@ -168,6 +168,7 @@
             gap: 12px;
             flex: 1;
             min-width: 200px;
+            position: relative;
         }
         
         .filters-wrap .filter-group i {
@@ -200,40 +201,105 @@
             color: #9DA2BF;
         }
         
-        .filters-wrap select {
-            padding: 12px 18px;
-            border: 1px solid #292D52;
-            border-radius: 18px;
-            font-size: 14px;
+        /* ============================================
+           CUSTOM DROPDOWN - حرفه‌ای
+           ============================================ */
+        .custom-dropdown {
+            position: relative;
             flex: 1;
             min-width: 150px;
-            background: #11142F;
-            transition: all 0.3s ease;
-            font-family: inherit;
-            color: #FFFFFF;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239DA2BF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: left 16px center;
         }
         
-        .filters-wrap select:focus {
+        .dropdown-toggle {
+            width: 100%;
+            padding: 12px 18px;
+            background: #11142F;
+            border: 1px solid #292D52;
+            border-radius: 18px;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .dropdown-toggle:hover {
+            border-color: #C026FF;
+        }
+        
+        .dropdown-toggle:focus {
             border-color: #C026FF;
             outline: none;
-            background: #151936;
             box-shadow: 0 0 25px rgba(192,38,255,0.15);
         }
         
-        .filters-wrap select option {
-            background: #11142F;
+        .dropdown-toggle .selected-text {
             color: #FFFFFF;
         }
         
-        .filter-label {
+        .dropdown-toggle .arrow {
             color: #9DA2BF;
-            font-size: 13px;
-            font-weight: 500;
-            white-space: nowrap;
+            transition: transform 0.3s ease;
+            font-size: 12px;
+        }
+        
+        .dropdown-toggle.open .arrow {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            left: 0;
+            background: #151936;
+            border: 1px solid #292D52;
+            border-radius: 16px;
+            padding: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px) scale(0.95);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .dropdown-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        
+        .dropdown-item {
+            padding: 10px 16px;
+            border-radius: 12px;
+            color: #C5C9DD;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(192,38,255,0.12);
+            color: #FFFFFF;
+        }
+        
+        .dropdown-item.active {
+            background: rgba(192,38,255,0.20);
+            color: #C83CFF;
+        }
+        
+        .dropdown-item .item-icon {
+            font-size: 16px;
         }
         
         /* ============================================
@@ -285,16 +351,6 @@
             font-size: 18px;
             font-weight: 800;
             color: #FFFFFF;
-        }
-        
-        .category-count {
-            font-size: 12px;
-            color: #C5C9DD;
-            background: #1D2142;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-weight: 500;
-            border: 1px solid #292D52;
         }
         
         .category-view-all {
@@ -699,10 +755,12 @@
                 width: 100%;
                 min-width: unset;
             }
-            .filters-wrap input,
-            .filters-wrap select {
+            .filters-wrap input {
                 width: 100%;
                 min-width: unset;
+            }
+            .custom-dropdown {
+                width: 100%;
             }
             .h-product-card {
                 flex: 0 0 150px;
@@ -738,9 +796,6 @@
                 flex-direction: column;
                 align-items: stretch;
                 gap: 6px;
-            }
-            .filter-label {
-                font-size: 12px;
             }
             .products-section {
                 padding: 0 16px;
@@ -809,6 +864,14 @@
                 font-size: 13px;
                 padding: 10px 16px;
             }
+            .dropdown-toggle {
+                padding: 10px 14px;
+                font-size: 13px;
+            }
+            .dropdown-item {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
         }
         
         @media (max-width: 400px) {
@@ -854,12 +917,26 @@
             </div>
             <div class="filter-group">
                 <i class="fas fa-sort-amount-down"></i>
-                <select id="sort-filter">
-                    <option value="default">مرتب‌سازی</option>
-                    <option value="price-asc">💰 قیمت: کم به زیاد</option>
-                    <option value="price-desc">💰 قیمت: زیاد به کم</option>
-                    <option value="name-asc">🔤 نام: الفبا</option>
-                </select>
+                <div class="custom-dropdown" id="sort-dropdown">
+                    <button class="dropdown-toggle" id="dropdown-toggle" onclick="toggleDropdown()">
+                        <span class="selected-text">مرتب‌سازی</span>
+                        <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="dropdown-menu" id="dropdown-menu">
+                        <div class="dropdown-item active" data-value="default" onclick="selectSort('default', this)">
+                            <span class="item-icon">📋</span> پیش‌فرض
+                        </div>
+                        <div class="dropdown-item" data-value="price-asc" onclick="selectSort('price-asc', this)">
+                            <span class="item-icon">💰</span> قیمت: کم به زیاد
+                        </div>
+                        <div class="dropdown-item" data-value="price-desc" onclick="selectSort('price-desc', this)">
+                            <span class="item-icon">💰</span> قیمت: زیاد به کم
+                        </div>
+                        <div class="dropdown-item" data-value="name-asc" onclick="selectSort('name-asc', this)">
+                            <span class="item-icon">🔤</span> نام: الفبا
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -875,7 +952,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">👕</span>
                     <h2 class="category-title">پوشاک</h2>
-                    <span class="category-count">217 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('پوشاک')">نمایش همه ›</a>
             </div>
@@ -949,7 +1025,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">📦</span>
                     <h2 class="category-title">متفرقه</h2>
-                    <span class="category-count">138 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('متفرقه')">نمایش همه ›</a>
             </div>
@@ -1023,7 +1098,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">👟</span>
                     <h2 class="category-title">کفش</h2>
-                    <span class="category-count">50 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('کفش')">نمایش همه ›</a>
             </div>
@@ -1097,7 +1171,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">👜</span>
                     <h2 class="category-title">کیف و کاور</h2>
-                    <span class="category-count">10 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('کیف و کاور')">نمایش همه ›</a>
             </div>
@@ -1171,7 +1244,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">💡</span>
                     <h2 class="category-title">روشنایی</h2>
-                    <span class="category-count">9 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('روشنایی')">نمایش همه ›</a>
             </div>
@@ -1245,7 +1317,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">🚗</span>
                     <h2 class="category-title">لوازم خودرو</h2>
-                    <span class="category-count">8 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('لوازم خودرو')">نمایش همه ›</a>
             </div>
@@ -1319,7 +1390,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">⌚</span>
                     <h2 class="category-title">ساعت</h2>
-                    <span class="category-count">8 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('ساعت')">نمایش همه ›</a>
             </div>
@@ -1393,7 +1463,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">🔧</span>
                     <h2 class="category-title">ابزار</h2>
-                    <span class="category-count">6 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('ابزار')">نمایش همه ›</a>
             </div>
@@ -1467,7 +1536,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">🏠</span>
                     <h2 class="category-title">خانه و آشپزخانه</h2>
-                    <span class="category-count">6 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('خانه و آشپزخانه')">نمایش همه ›</a>
             </div>
@@ -1541,7 +1609,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">💆</span>
                     <h2 class="category-title">سلامت و زیبایی</h2>
-                    <span class="category-count">4 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('سلامت و زیبایی')">نمایش همه ›</a>
             </div>
@@ -1603,7 +1670,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">🏡</span>
                     <h2 class="category-title">لوازم خانگی</h2>
-                    <span class="category-count">3 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('لوازم خانگی')">نمایش همه ›</a>
             </div>
@@ -1653,7 +1719,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">📱</span>
                     <h2 class="category-title">لوازم الکترونیکی</h2>
-                    <span class="category-count">2 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('لوازم الکترونیکی')">نمایش همه ›</a>
             </div>
@@ -1691,7 +1756,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">🎮</span>
                     <h2 class="category-title">بازی و سرگرمی</h2>
-                    <span class="category-count">1 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('بازی و سرگرمی')">نمایش همه ›</a>
             </div>
@@ -1717,7 +1781,6 @@
                 <div class="category-title-wrap">
                     <span class="category-icon">⛺</span>
                     <h2 class="category-title">سفر و کمپینگ</h2>
-                    <span class="category-count">1 محصول</span>
                 </div>
                 <a href="#" class="category-view-all" onclick="showCategory('سفر و کمپینگ')">نمایش همه ›</a>
             </div>
@@ -12883,6 +12946,51 @@
         })();
         
         // ==========================================
+        // Dropdown مرتب‌سازی
+        // ==========================================
+        let currentSort = 'default';
+        
+        function toggleDropdown() {
+            const menu = document.getElementById('dropdown-menu');
+            const toggle = document.getElementById('dropdown-toggle');
+            menu.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+        
+        function selectSort(value, element) {
+            // بستن dropdown
+            const menu = document.getElementById('dropdown-menu');
+            const toggle = document.getElementById('dropdown-toggle');
+            menu.classList.remove('open');
+            toggle.classList.remove('open');
+            
+            // به‌روزرسانی آیتم فعال
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+            
+            // به‌روزرسانی متن انتخاب‌شده
+            const selectedText = element.textContent.trim();
+            document.querySelector('.selected-text').textContent = selectedText;
+            
+            // اعمال مرتب‌سازی
+            currentSort = value;
+            applyFilters();
+        }
+        
+        // بستن dropdown با کلیک خارج از آن
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('sort-dropdown');
+            if (!dropdown.contains(event.target)) {
+                const menu = document.getElementById('dropdown-menu');
+                const toggle = document.getElementById('dropdown-toggle');
+                menu.classList.remove('open');
+                toggle.classList.remove('open');
+            }
+        });
+        
+        // ==========================================
         // نمایش همه محصولات یک دسته
         // ==========================================
         function showCategory(category) {
@@ -12900,7 +13008,6 @@
         function applyFiltersOnAllProducts(category) {
             const allProducts = document.querySelectorAll('#all-products-grid .product-card');
             const search = document.getElementById('search-filter').value.toLowerCase().trim();
-            const sort = document.getElementById('sort-filter').value;
             
             let visible = 0;
             let products = [];
@@ -12921,15 +13028,16 @@
                 }
             });
             
-            if (sort !== 'default') {
+            // مرتب‌سازی
+            if (currentSort !== 'default') {
                 const grid = document.getElementById('all-products-grid');
                 const cards = Array.from(products);
                 
                 cards.sort((a, b) => {
                     const priceA = parseInt(a.dataset.price) || 0;
                     const priceB = parseInt(b.dataset.price) || 0;
-                    if (sort === 'price-asc') return priceA - priceB;
-                    if (sort === 'price-desc') return priceB - priceA;
+                    if (currentSort === 'price-asc') return priceA - priceB;
+                    if (currentSort === 'price-desc') return priceB - priceA;
                     return a.querySelector('.product-title').textContent.localeCompare(
                         b.querySelector('.product-title').textContent
                     );
@@ -12949,7 +13057,13 @@
             document.getElementById('back-to-categories').style.display = 'none';
             // ریست فیلترها هنگام بازگشت
             document.getElementById('search-filter').value = '';
-            document.getElementById('sort-filter').value = 'default';
+            // ریست مرتب‌سازی به پیش‌فرض
+            currentSort = 'default';
+            document.querySelector('.selected-text').textContent = 'مرتب‌سازی';
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.value === 'default') item.classList.add('active');
+            });
             // نمایش مجدد همه محصولات
             const allProducts = document.querySelectorAll('#all-products-grid .product-card');
             allProducts.forEach(card => card.classList.remove('hidden'));
@@ -12963,7 +13077,6 @@
             if (!document.getElementById('all-products-container').classList.contains('active')) return;
             
             const search = document.getElementById('search-filter').value.toLowerCase().trim();
-            const sort = document.getElementById('sort-filter').value;
             const allProducts = document.querySelectorAll('#all-products-grid .product-card');
             let products = [];
             
@@ -12979,15 +13092,15 @@
                 }
             });
             
-            if (sort !== 'default') {
+            if (currentSort !== 'default') {
                 const grid = document.getElementById('all-products-grid');
                 const cards = Array.from(products);
                 
                 cards.sort((a, b) => {
                     const priceA = parseInt(a.dataset.price) || 0;
                     const priceB = parseInt(b.dataset.price) || 0;
-                    if (sort === 'price-asc') return priceA - priceB;
-                    if (sort === 'price-desc') return priceB - priceA;
+                    if (currentSort === 'price-asc') return priceA - priceB;
+                    if (currentSort === 'price-desc') return priceB - priceA;
                     return a.querySelector('.product-title').textContent.localeCompare(
                         b.querySelector('.product-title').textContent
                     );
@@ -13001,7 +13114,6 @@
         // رویدادها
         // ==========================================
         document.getElementById('search-filter').addEventListener('input', applyFilters);
-        document.getElementById('sort-filter').addEventListener('change', applyFilters);
     </script>
 </body>
 </html>
