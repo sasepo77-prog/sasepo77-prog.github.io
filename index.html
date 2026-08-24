@@ -206,7 +206,7 @@
         }
         
         /* ============================================
-           CUSTOM DROPDOWN - حرفه‌ای با Z-index بالا
+           CUSTOM DROPDOWN
            ============================================ */
         .custom-dropdown {
             position: relative;
@@ -12972,10 +12972,14 @@
         })();
         
         // ==========================================
-        // Dropdown مرتب‌سازی
+        // متغیرهای سراسری
         // ==========================================
         let currentSort = 'default';
+        let currentCategory = 'all';
         
+        // ==========================================
+        // Dropdown مرتب‌سازی
+        // ==========================================
         function toggleDropdown() {
             const menu = document.getElementById('dropdown-menu');
             const toggle = document.getElementById('dropdown-toggle');
@@ -13020,63 +13024,20 @@
         // نمایش همه محصولات یک دسته
         // ==========================================
         function showCategory(category) {
+            currentCategory = category;
             document.getElementById('categories-container').style.display = 'none';
             document.getElementById('back-to-categories').style.display = 'inline-block';
             document.getElementById('all-products-container').classList.add('active');
             document.getElementById('filters-section').classList.add('active');
-            applyFiltersOnAllProducts(category);
+            applyFilters();
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        // ==========================================
-        // اعمال فیلتر روی محصولات کامل
-        // ==========================================
-        function applyFiltersOnAllProducts(category) {
-            const allProducts = document.querySelectorAll('#all-products-grid .product-card');
-            const search = document.getElementById('search-filter').value.toLowerCase().trim();
-            
-            let visible = 0;
-            let products = [];
-            
-            allProducts.forEach(card => {
-                const name = card.querySelector('.product-title').textContent.toLowerCase();
-                const cardCategory = card.dataset.category || '';
-                const showCategory = category === 'all' || category === '' || cardCategory === category;
-                const showSearch = !search || name.includes(search);
-                const show = showCategory && showSearch;
-                
-                if (show) {
-                    card.classList.remove('hidden');
-                    visible++;
-                    products.push(card);
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-            
-            // مرتب‌سازی
-            if (currentSort !== 'default') {
-                const grid = document.getElementById('all-products-grid');
-                const cards = Array.from(products);
-                
-                cards.sort((a, b) => {
-                    const priceA = parseInt(a.dataset.price) || 0;
-                    const priceB = parseInt(b.dataset.price) || 0;
-                    if (currentSort === 'price-asc') return priceA - priceB;
-                    if (currentSort === 'price-desc') return priceB - priceA;
-                    return a.querySelector('.product-title').textContent.localeCompare(
-                        b.querySelector('.product-title').textContent
-                    );
-                });
-                
-                cards.forEach(card => grid.appendChild(card));
-            }
         }
         
         // ==========================================
         // بازگشت به دسته‌بندی‌ها
         // ==========================================
         function showCategories() {
+            currentCategory = 'all';
             document.getElementById('categories-container').style.display = 'block';
             document.getElementById('all-products-container').classList.remove('active');
             document.getElementById('filters-section').classList.remove('active');
@@ -13097,7 +13058,7 @@
         }
         
         // ==========================================
-        // اعمال فیلتر (جستجو و مرتب‌سازی)
+        // اعمال فیلتر (جستجو و مرتب‌سازی با حفظ دسته)
         // ==========================================
         function applyFilters() {
             if (!document.getElementById('all-products-container').classList.contains('active')) return;
@@ -13108,7 +13069,13 @@
             
             allProducts.forEach(card => {
                 const name = card.querySelector('.product-title').textContent.toLowerCase();
-                const show = !search || name.includes(search);
+                const cardCategory = card.dataset.category || '';
+                
+                // بررسی دسته‌بندی
+                const showCategory = currentCategory === 'all' || cardCategory === currentCategory;
+                // بررسی جستجو
+                const showSearch = !search || name.includes(search);
+                const show = showCategory && showSearch;
                 
                 if (show) {
                     card.classList.remove('hidden');
@@ -13118,6 +13085,7 @@
                 }
             });
             
+            // مرتب‌سازی
             if (currentSort !== 'default') {
                 const grid = document.getElementById('all-products-grid');
                 const cards = Array.from(products);
